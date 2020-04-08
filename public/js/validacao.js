@@ -28,12 +28,14 @@ $(document).ready(function(){
         let datatermino = $('#datatermino').val();
         let horatermino = $('#horariotermino').val();
         let descricao = $('#descricaoevento').val();
+        let categoria = $('#categoria').val();
         let nome1 = $('#namevento').val();
         let datainicio1 = $('#dataevento').val();
         let horainicio1 = $('#horaevento').val();
         let datatermino1 = $('#datet').val();
         let horatermino1 = $('#horat').val();
         let descricao1 = $('#descricao').val();
+
         $.ajax({
             url: 'api/update/modalupdate.php',
             type: 'POST',
@@ -46,6 +48,7 @@ $(document).ready(function(){
                 "datatermino":datatermino ,
                 "horariotermino":horatermino,
                 "descricao": descricao, //atuais novos
+                "categoria":categoria,
                 "nome1":nome1, //antigos
                 "datainicio1":datainicio1,
                 "horarioinicio1":horainicio1,
@@ -73,6 +76,43 @@ $(document).ready(function(){
 
         });
       });
+      $('#criar').on("click", function(){
+          alert("Enviou");
+          let login = $('#login').val();
+          let nome = $('#novonomevento').val();
+          let datainicio = $('#novodatainicio').val();
+          let horainicio = $('#novohorarioinicio').val();
+          let datatermino = $('#novodatatermino').val();
+          let horatermino = $('#novohorariotermino').val();
+          let descricao = $('#novodescricaoevento').val();
+          $.ajax({
+            url:"api/post/cadastrar.php",
+            type:"POST",
+            data: {
+                "login":login,
+                "nome":nome,
+                "datainicio":datainicio,
+                "horarioinicio":horainicio,
+                "datatermino":datatermino ,
+                "horariotermino":horatermino,
+                "descricao": descricao
+            },
+            success: function(data,responseText){
+                console.log(responseText);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: data.responseText,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(location.reload.bind(location), 1500);
+            },
+            error: function(data){
+                console.log(data.responseText);
+            }
+          });
+      })
       $("#excluirevento").on("click", function(){
         let id = $('#idevento').val();
         let login = $('#login').val();

@@ -12,7 +12,7 @@ $dataend = "".$_POST['datatermino'] ." " .$_POST['horariotermino'];
 $query = "update agenda set data_ag='".$data.
     "', data_fim='".$dataend.
     "', nome='".$_POST['nome'] . 
-    "', Descricao='".$_POST['descricao']."' where id=".$_POST['id'] . " and usuario_id=".$_POST['login'].
+    "', Descricao='".$_POST['descricao']."', categoria='".$_POST['categoria'] ."' where id=".$_POST['id'] . " and usuario_id=".$_POST['login'].
     " and nome='".$_POST['nome1']."'"." and data_ag='".$_POST['datainicio1']. " " . $_POST['horarioinicio1']."'"." and data_fim='".$_POST['datatermino1']. " " . $_POST['horariotermino1']."'";
 
 

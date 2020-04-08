@@ -45,6 +45,7 @@
           timezone: 'America/Fortaleza',
           locale:'pt-br',
           height: 600,
+          themeSystem: 'bootstrap',
           overflow: true,
           contentHeight: "auto",
           contentWidth: "auto",
@@ -81,9 +82,13 @@
               user.innerHTML = info.event.extendedProps.description;
               info.el.lastChild.lastChild.appendChild(user);
               console.log(info.el.style); 
-              if(info.event.extendedProps.description != null && info.event.extendedProps.description != ""){
-                info.el.style.backgroundColor  = "red";
-                info.el.style.borderColor = "red";
+              if(info.event.extendedProps.categoria == "Crítico"){
+                info.el.style.backgroundColor  = "#ff6347";
+                info.el.style.borderColor = "black";
+              }
+              if(info.event.extendedProps.categoria == "Atenção"){
+                info.el.style.backgroundColor  = "#ffa900";
+                info.el.style.borderColor = "blue";
               }
             }else{
               var user = document.createElement('div');
@@ -97,7 +102,7 @@
             document.getElementById("abaevento").className = "nav-link";
             document.getElementById("abacriar").className = "nav-link active";
             document.getElementById("tabevento").className = "tab-pane";
-            document.getElementById("Criar evento").className = "tab-pane active";
+            document.getElementById("Criarevento").className = "tab-pane active";
           },
           eventDrop: function(info){
             timezone: 'America/Noronha';
@@ -128,7 +133,7 @@
           eventClick: function(info){
             document.getElementById("abacriar").className = "nav-link";
             document.getElementById("abaevento").className = "nav-link active";
-            document.getElementById("Criar evento").className = "tab-pane";
+            document.getElementById("Criarevento").className = "tab-pane";
             document.getElementById("tabevento").className = "tab-pane active";
             $.ajax({
               url:"api/get/dadoevento.php",
@@ -156,6 +161,8 @@
                 document.getElementById('horat').value = resposta.data_fim.substring(11);
                 document.getElementById('descricao').value = resposta.Descricao;
                 document.getElementById('feedbackdescricao').value = resposta.feedback;
+                document.getElementById('catevento').value = resposta.categoria;
+                document.getElementById('categoria').value = resposta.categoria;
               }
             });
             $("#modal").modal('toggle');
@@ -219,6 +226,7 @@
     </nav>
     <p></p>
   <input type="text" id='login' style="display: none;" value="{{ Auth::id() }}">
+  <input type="text" id='catevento' style="display: none;" value="">
     <input type="text" id='idevento' style="display: none;" value="">
     <input type="text" id='namevento' style="display: none;" value="">
     <input type="text" id='dataevento' style="display: none;" value="">

@@ -16,22 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('profile', function () {
-    Route::get('/agenda', function(){
-        if(Auth::id() != NULL){
-            return view('agenda');
-        }else{
-            return view('welcome');
-        }
-    });
-})->middleware('verified');
 
 Route::get('/agenda', function(){
-    if(Auth::id() != NULL){
-        return view('agenda');
-    }else{
-        return view('welcome');
-    }
+    return view('agenda');
 });
 Route::get('/', function(){return view('welcome');});
 

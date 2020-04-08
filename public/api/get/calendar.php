@@ -6,7 +6,7 @@
   $char = $conexao->prepare("set names utf8");
   $char->execute();
   $teste = $_GET['login'];
-  $query = "select id,nome title,data_ag start, data_fim end, descricao description from agenda a where usuario_id=".$teste;
+  $query = "select id,nome title,data_ag start, data_fim end, descricao description, categoria from agenda a where usuario_id=".$teste;
   $result = $conexao->prepare($query);
   $result->execute(); $dados = [];
   $evento = array();
