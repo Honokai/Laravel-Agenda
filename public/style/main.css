@@ -1,0 +1,59 @@
+#login{
+    background-image: url('../img/login.jpg');
+    background-size: auto;
+    background-position: center;
+    
+}
+
+#registro{
+    background-image: url('../img/registro.png');
+    background-size: auto;
+    background-position: center;
+    
+}
+.loginback{
+    
+    height: 100vh;
+    width: 100%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    justify-content: flex-end;
+
+}
+
+.fc-event{
+    height: max-content !important;
+}
+
+.fc-title{
+    font-weight: bolder !important;
+}
+.swal-height{
+    width: 100px !important;
+}
+.container{
+    height: 100% ;
+    width: 100%;
+    margin: auto;
+}
+
+.centro{
+    width: 40%;
+    height: 30% auto;
+    margin: auto;
+    top: 5%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    border: 3px green;
+}
+
+.alinhamento{
+    text-align: center;
+}
+
+.img{
+    margin-top: 7%;
+    width: 25%;
+    height: 25% auto;
+    align-self: center;
+}
