@@ -19,9 +19,11 @@ Auth::routes(['verify' => true]);
 Route::get('/agenda', function(){
     return view('agenda');
 })->middleware('verified');
-Route::get('/', function(){return view('welcome');});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
 
+Route::get('/', function(){
+    return view('welcome');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

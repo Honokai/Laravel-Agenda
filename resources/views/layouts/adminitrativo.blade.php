@@ -1,3 +1,0 @@
-@section('conteudo')
-    
-@endsection
