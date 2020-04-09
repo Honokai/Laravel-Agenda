@@ -36,10 +36,10 @@
       <div class="col-sm">
         <div class="card" style="width: 30rem;">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title">Resumo geral de eventos</h5>
           <h6 class="card-subtitle mb-2 text-muted"></h6>
-          @foreach ( $usuarios as $usuario)
-            <p class="card-text">{{$usuario->nome}}</p>
+          @foreach ( $eventos as $evento)
+            <p class="card-text">{{$evento->nome}}</p>
           @endforeach
           </div>
         </div>

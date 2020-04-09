@@ -15,12 +15,13 @@ class CreateAgendaTable extends Migration
     {
         Schema::create('agenda', function (Blueprint $table) {
             $table->id();
-            $table->integer('usuario_id');
+            $table->bigInteger('usuario_id')->unsigned();
             $table->string('nome');
-            $table->timestamp('data_ag')->default('');
-            $table->timestamp('data_fim')->default('');
+            $table->timestamp('data_ag')->nullable();
+            $table->timestamp('data_fim')->nullable();
             $table->string('descricao');
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');
+            $table->string('categoria');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('no action');
         });
     }
 

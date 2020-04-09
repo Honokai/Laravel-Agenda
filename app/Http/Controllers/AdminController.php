@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuario;
-
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     /**
@@ -25,7 +25,10 @@ class AdminController extends Controller
 
     public function painel()
     {
+        $id = Auth::id();
         $usuarios = Usuario::online();
-        return view('painel')->with('usuarios',$usuarios);
+        $eventos = Usuario::eventosProximos($id);
+        
+        return view('painel')->with('usuarios',$usuarios)->with('eventos',$eventos);
     }
 }

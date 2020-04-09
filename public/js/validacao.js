@@ -98,12 +98,12 @@ $(document).ready(function(){
                 "descricao": descricao,
                 "categoria":categoria
             },
-            success: function(data,responseText){
-                console.log(responseText);
+            success: function(data){
+                
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: responseText,
+                    title: JSON.parse(data),
                     showConfirmButton: false,
                     timer: 1500
                 });

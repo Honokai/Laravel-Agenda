@@ -31,9 +31,9 @@ require_once('../../config/BancoDados.php');
         "')";
     $resultado = $conexao->prepare($query);
     if($resultado->execute()){
-        echo json_encode("EVENTO ADICIONADO");
+        echo json_encode("Evento adicionado");
     }else{
-        echo json_encode($query);
+        echo json_encode($resultado->errorInfo());
     }
        
 }
