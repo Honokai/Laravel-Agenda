@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $('.hora').mask("00:00:00");
     $('#e-mail').blur(function(){
         var valor = document.getElementById('e-mail').value;
         $.ajax({
@@ -77,7 +77,6 @@ $(document).ready(function(){
         });
       });
       $('#criar').on("click", function(){
-          alert("Enviou");
           let login = $('#login').val();
           let nome = $('#novonomevento').val();
           let datainicio = $('#novodatainicio').val();
@@ -85,6 +84,7 @@ $(document).ready(function(){
           let datatermino = $('#novodatatermino').val();
           let horatermino = $('#novohorariotermino').val();
           let descricao = $('#novodescricaoevento').val();
+          let categoria = $('#novacategoria').val();
           $.ajax({
             url:"api/post/cadastrar.php",
             type:"POST",
@@ -95,14 +95,15 @@ $(document).ready(function(){
                 "horarioinicio":horainicio,
                 "datatermino":datatermino ,
                 "horariotermino":horatermino,
-                "descricao": descricao
+                "descricao": descricao,
+                "categoria":categoria
             },
             success: function(data,responseText){
                 console.log(responseText);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: data.responseText,
+                    title: responseText,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -182,10 +183,12 @@ $(document).ready(function(){
                 "descricao" : $('#feedbackdescricao').val()
             },
             success: function(data, response){
+                let resposta = JSON.parse(data);
+                console.log(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: data.responseText,
+                    title: resposta.resposta,
                     showConfirmButton: false,
                     timer: 1500
                 });

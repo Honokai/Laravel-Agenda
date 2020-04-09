@@ -50,7 +50,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="">Horário</span>
                                 </div>
-                                <input type="text" id='horarioinicio' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id='horarioinicio' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
@@ -62,7 +62,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="">Horário término</span>
                                 </div>
-                                <input type="text" id='horariotermino' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                <input type="text" id='horariotermino' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
@@ -93,6 +93,7 @@
                                 <span class="input-group-text" id="">Categoria</span>
                             </div>
                             <select type="text" id='novacategoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
+                                <option value=""></option>
                                 <option value="Crítico">Crítico</option>
                                 <option value="Atenção">Atenção</option>
                             </select>
@@ -113,7 +114,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Horário</span>
                             </div>
-                            <input type="text" id='novohorarioinicio' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id='novohorarioinicio' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3" style="float:left">
                             <div class="input-group-prepend">
@@ -125,7 +126,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Horário término</span>
                             </div>
-                            <input type="text" id='novohorariotermino' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" id='novohorariotermino' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group mb-3" style="float:left">
                             <div class="input-group-prepend">

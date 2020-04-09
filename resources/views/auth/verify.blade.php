@@ -10,12 +10,12 @@
                 <div class="card-body">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ __('Um novo e-mail de verificação foi enviado.') }}
                         </div>
                     @endif
 
                     {{ __('Antes de prosseguir, por favor verifique seu email por um link de verificação.') }}
-                    {{ __('Caso não tenha recebido,') }},
+                    {{ __('Caso não tenha recebido') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
                         <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('clique aqui para solicitar novamente') }}</button>.

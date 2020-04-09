@@ -76,12 +76,10 @@
             }
           ],
           eventRender: function(info) {
-            console.log(info);
             if(info.view.type == 'dayGridMonth' || info.view.type == 'listWeek'){
               var user = document.createElement('div');
               user.innerHTML = info.event.extendedProps.description;
               info.el.lastChild.lastChild.appendChild(user);
-              console.log(info.el.style); 
               if(info.event.extendedProps.categoria == "Crítico"){
                 info.el.style.backgroundColor  = "#ff6347";
                 info.el.style.borderColor = "black";
@@ -91,6 +89,14 @@
                 info.el.style.borderColor = "blue";
               }
             }else{
+              if(info.event.extendedProps.categoria == "Crítico"){
+                info.el.style.backgroundColor  = "#ff6347";
+                info.el.style.borderColor = "black";
+              }
+              if(info.event.extendedProps.categoria == "Atenção"){
+                info.el.style.backgroundColor  = "#ffa900";
+                info.el.style.borderColor = "blue";
+              }
               var user = document.createElement('div');
               user.style.display = 'inline-block';
               user.innerHTML = info.event.extendedProps.description;
@@ -98,11 +104,15 @@
             }
           },
           dateClick: function(dateClickInfo ){
+            document.getElementById("novodatainicio").value = dateClickInfo.dateStr;
+            document.getElementById("novodatatermino").value = dateClickInfo.dateStr;
             $("#modal").modal('toggle');
             document.getElementById("abaevento").className = "nav-link";
             document.getElementById("abacriar").className = "nav-link active";
             document.getElementById("tabevento").className = "tab-pane";
             document.getElementById("Criarevento").className = "tab-pane active";
+            document.getElementById("acontecimentos").className = "nav-link";
+            document.getElementById("feedback").className = "tab-pane";
           },
           eventDrop: function(info){
             timezone: 'America/Noronha';
@@ -135,6 +145,8 @@
             document.getElementById("abaevento").className = "nav-link active";
             document.getElementById("Criarevento").className = "tab-pane";
             document.getElementById("tabevento").className = "tab-pane active";
+            document.getElementById("acontecimentos").className = "nav-link";
+            document.getElementById("feedback").className = "tab-pane";
             $.ajax({
               url:"api/get/dadoevento.php",
               type: 'GET',
@@ -145,7 +157,6 @@
                 nome: info.event.title
               },
               complete: function(data, response, status){
-                console.log(data);
                 let resposta = JSON.parse(data.responseText);
                 document.getElementById('idevento').value = resposta.id;
                 document.getElementById('nomevento').value = resposta.nome;
@@ -194,11 +205,11 @@
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                             </li>
                         @endif
                     @else
@@ -208,12 +219,14 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="">
+                                  {{ __('Painel administrativo') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Sair') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

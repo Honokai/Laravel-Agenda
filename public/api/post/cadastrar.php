@@ -11,6 +11,7 @@ require_once('../../config/BancoDados.php');
     $char->execute();
     $usuario = $_POST['login'];
     $nome = $_POST['nome'];
+    $categoria = $_POST['categoria'];
     $inicio = $_POST['datainicio']. " " . $_POST['horarioinicio'];
     $fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
     $descricao = $_POST['descricao'];
@@ -19,12 +20,14 @@ require_once('../../config/BancoDados.php');
         `nome`,
         `data_ag`,
         `data_fim`,
-        `descricao`) VALUES (". 
+        `descricao`, 
+        `categoria`) VALUES (". 
         $usuario. ",'". 
         $nome ."','". 
         $inicio . "','". 
         $fim . "','". 
-        $descricao .
+        $descricao . "','".
+        $categoria.
         "')";
     $resultado = $conexao->prepare($query);
     if($resultado->execute()){
