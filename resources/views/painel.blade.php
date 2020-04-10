@@ -23,8 +23,8 @@
                 <div class="col-sm">
                   <p class="card-text"><strong>{{$usuario->nome}}</strong></p>
                 </div>
-                <div class="col-sm" style="color:green">
-                  Online
+                <div class="col-sm">
+                  <div style="color:white;background-color:#6ab263;border-radius:5px;width:60px;text-align:center">Online</div>
                 </div>
               </div>
                 
