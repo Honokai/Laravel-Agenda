@@ -58,7 +58,7 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
+                .m-b-md {
                 margin-bottom: 30px;
             }
         </style>
@@ -71,16 +71,14 @@
                         <a href="{{ url('/agenda') }}">Agenda</a>
                     @else
                         <a href="{{ route('login') }}">Entrar</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Registrar</a>
-                        @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-    
+                <div class="title m-b-md">
+                    {{config('app.name','Agenda')}}
+                </div>
             </div>
         </div>
     </body>

@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/agenda', function(){
-    return view('agenda');
-})->middleware('verified');
+Route::get('/agenda', 'AdminController@agenda')->name('agenda')->middleware('verified');
 
 Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
 

@@ -106,7 +106,7 @@
           dateClick: function(dateClickInfo ){
             document.getElementById("novodatainicio").value = dateClickInfo.dateStr;
             document.getElementById("novodatatermino").value = dateClickInfo.dateStr;
-            $("#modal").modal('toggle');
+            $("#tudo").modal('toggle');
             document.getElementById("abaevento").className = "nav-link";
             document.getElementById("abacriar").className = "nav-link active";
             document.getElementById("tabevento").className = "tab-pane";
@@ -176,7 +176,7 @@
                 document.getElementById('categoria').value = resposta.categoria;
               }
             });
-            $("#modal").modal('toggle');
+            $("#tudo").modal('toggle');
           }
         });
         calendar.render();

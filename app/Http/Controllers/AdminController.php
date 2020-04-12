@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Symfony\Contracts\EventDispatcher\Event;
 use Illuminate\Http\Request;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
+use App\Events\EventoProximo;
 class AdminController extends Controller
 {
     /**
@@ -28,7 +29,12 @@ class AdminController extends Controller
         $id = Auth::id();
         $usuarios = Usuario::online();
         $eventos = Usuario::eventosProximos($id);
-        
         return view('painel')->with('usuarios',$usuarios)->with('eventos',$eventos);
+    }
+
+    public function agenda(){
+        $id = Auth::id();
+        $eventos = Usuario::eventosProximos($id);
+        return view('agenda')->with('eventos',$eventos);
     }
 }
