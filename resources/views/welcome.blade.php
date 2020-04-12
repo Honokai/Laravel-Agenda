@@ -80,11 +80,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                   {{config('app.name','Agenda')}}
-                </div>
-
-                
+    
             </div>
         </div>
     </body>
