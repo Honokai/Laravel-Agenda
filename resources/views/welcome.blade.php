@@ -58,7 +58,7 @@
                 text-transform: uppercase;
             }
 
-            .m-b-md {
+                .m-b-md {
                 margin-bottom: 30px;
             }
         </style>
