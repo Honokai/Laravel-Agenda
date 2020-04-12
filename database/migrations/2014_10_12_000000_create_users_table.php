@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('senha');
             $table->rememberToken();
             $table->timestamps();
+            $table->integer('online', $autoincrement = false, $unsigned = false)->default('0');
         });
     }
 
