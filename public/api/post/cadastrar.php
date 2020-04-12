@@ -10,7 +10,7 @@ require_once('../../config/BancoDados.php');
     $char = $conexao->prepare("set names utf8");
     $char->execute();
     $usuario = $_POST['login'];
-    $nome = $_POST['nome'];
+    $nome = $_POST['nome'] == "" ? NULL : $_POST['nome'];
     $categoria = $_POST['categoria'];
     $inicio = $_POST['datainicio']. " " . $_POST['horarioinicio'];
     $fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
@@ -33,7 +33,8 @@ require_once('../../config/BancoDados.php');
     if($resultado->execute()){
         echo json_encode("Evento adicionado");
     }else{
-        echo json_encode($resultado->errorInfo());
+        http_response_code(301);
+        echo json_encode("Verifique os campos informados");
     }
        
 }

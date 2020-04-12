@@ -1,5 +1,8 @@
 $(document).ready(function(){
+    $('#hoje').modal('toggle');
+   
     $('.hora').mask("00:00:00");
+    
     $('#e-mail').blur(function(){
         var valor = document.getElementById('e-mail').value;
         $.ajax({
@@ -110,7 +113,13 @@ $(document).ready(function(){
                 setTimeout(location.reload.bind(location), 1500);
             },
             error: function(data){
-                console.log(data.responseText);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'info',
+                    title: JSON.parse(data.responseText),
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
           });
       })
