@@ -72,7 +72,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="main" style="width:100%">
+            <p></p>
             @yield('conteudo')
         </main>
     </div>
