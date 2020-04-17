@@ -2,7 +2,7 @@
 {{-- refatorar esta view   --}}
 
 @section('conteudo')
-<div class="" style="text-align:center;margin-left:1%;width:100%">
+<div class="" style="text-align:center;margin-left:1%;width:100%;margin-right:14%">
   <div class="row">
     <div class="col-2">
       <div class="card" style="max-width: 300px;">
@@ -17,7 +17,23 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="card" style="width: 27rem;">
+      <div class="card" id="fotoupload" style="width: 27rem; display: none">
+        <div class="card-body">
+          <h5 class="card-title">Selecionar foto</h5>
+          <hr>
+          <div class="row" style="text-align:center;font-weight:bold">
+            <div class="col-sm">
+              <form id="upload" enctype="multipart/form-data" method="post">
+                <input type="text" id="userid" name="id" style="display:none" value="{{Auth::id()}}">
+                <input id="foto" type="file" name="arquivo">
+                <p></p>
+              </form>
+              <button id="enviarfoto" class="btn btn-info">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: auto;">
         <div class="card-body">
           <h5 class="card-title">Eventos para hoje</h5>
           <hr>
@@ -45,7 +61,7 @@
         </div>
       </div>
       <p></p>
-      <div class="card" style="width: 27rem;">
+      <div class="card" style="width: auto;">
         <div class="card-body" style="text-align:left">
           <h5 class="card-title" >Usuários online</h5>
           <hr>
@@ -70,12 +86,12 @@
             </div>
           @endforeach
           </div>  
-        </div>
+        </div>  
       </div>
     </div>
 
     <div class="col-6">
-      <div class="card" style="width:30rem">
+      <div class="card" style="max-width: 90%">
         <div class="card-header">{{ __('Criar novo acesso') }}</div>       
           <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
