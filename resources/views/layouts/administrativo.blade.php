@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/agenda') }}">
                      Painel Administrativo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -53,7 +53,9 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
+                                
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="perfil" style="width:40px;height:40px;border-radius:40px">
                                     Bem vindo, {{ Auth::user()->nome }} <span class="caret"></span>
                                 </a>
 
@@ -61,7 +63,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Sair') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

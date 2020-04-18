@@ -29,12 +29,15 @@ require_once('../../config/BancoDados.php');
         $descricao . "','".
         $categoria.
         "')";
+
+    
     $resultado = $conexao->prepare($query);
-    if($resultado->execute()){
-        echo json_encode("Evento adicionado");
+    if($_POST['nome'] != "" && $inicio < $fim){
+        $resultado->execute();
+        echo json_encode("Evento adicionado com sucesso.");
     }else{
         http_response_code(301);
-        echo json_encode("Verifique os campos informados");
+        echo json_encode("Verifique os campos informados.");
     }
        
 }

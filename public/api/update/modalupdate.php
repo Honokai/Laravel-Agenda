@@ -5,13 +5,14 @@ date_default_timezone_set('America/Fortaleza');
 $conexao = $banco->conexao();
 $char = $conexao->prepare("set names utf8");
 $char->execute();
+$nome = $_POST['nome'] == "" ? NULL : $_POST['nome'];
 $data = "".$_POST['datainicio'] ." " .$_POST['horarioinicio'];
 $dataend = "".$_POST['datatermino'] ." " .$_POST['horariotermino'];
 
 
 $query = "update agenda set data_ag='".$data.
     "', data_fim='".$dataend.
-    "', nome='".$_POST['nome'] . 
+    "', nome='".$nome . 
     "', Descricao='".$_POST['descricao']."', categoria='".$_POST['categoria'] ."' where id=".$_POST['id'] . " and usuario_id=".$_POST['login'].
     " and nome='".$_POST['nome1']."'"." and data_ag='".$_POST['datainicio1']. " " . $_POST['horarioinicio1']."'"." and data_fim='".$_POST['datatermino1']. " " . $_POST['horariotermino1']."'";
 
