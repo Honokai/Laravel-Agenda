@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-2">
       <div class="card" style="max-width: 300px;">
-        <img class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
+        <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
             <p class="card-text">Vejamos</p>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="card" id="fotoupload" style="width: 27rem; display: none">
+      <div class="card" id="fotoupload" style="width: auto; display: none">
         <div class="card-body">
           <h5 class="card-title">Selecionar foto</h5>
           <hr>
@@ -33,6 +33,7 @@
           </div>
         </div>
       </div>
+      <p id="para"style="display:none"></p>
       <div class="card" style="width: auto;">
         <div class="card-body">
           <h5 class="card-title">Eventos para hoje</h5>

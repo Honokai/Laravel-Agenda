@@ -3,11 +3,16 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id = $_POST['id'];
     $foto = $_FILES['arquivo'];
-    if(mkdir("../../profile/".$id) === true){
-        //  if(file_exists("../../profile/".$id."/"
+    if(file_exists("../../profile/".$id)){
         move_uploaded_file($_FILES['arquivo']['tmp_name'], "../../profile/".$id."/".$id.".png");
+        $imagem = file_get_contents("../../profile/".$id."/".$id.".png");
+        header("Content-Type: image/png");
+        echo base64_encode($imagem); 
     }else{
         move_uploaded_file($_FILES['arquivo']['tmp_name'], "../../profile/".$id."/".$id.".png");
+        $imagem = file_get_contents("../../profile/".$id."/".$id.".png");
+        header("Content-Type: image/png");
+        echo base64_encode($imagem); 
     }
 
 }else{
