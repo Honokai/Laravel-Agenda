@@ -17,10 +17,25 @@ $(document).ready(function(){
             data: form,
             success:function(data){
                 //ao mandar nova foto atualiza o perfil sem que tenha que recarregar a página
-                $("#imagemperfil").attr("src","data:image/png;base64,"+data+"");   
+                $("#imagemperfil").attr("src","data:image/png;base64,"+data+"");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: "Foto atualizada",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                document.getElementById('fotoupload').style.display = "none";
             },
             error: function(data){
-                console.log(data);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'info',
+                    title: "Algo deu errado.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
             }
         });
 

@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/teste.js"></script>
+    <script type="text/javascript" src="js/sweetalert.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
