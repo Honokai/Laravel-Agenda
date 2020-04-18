@@ -69,7 +69,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Descrição</span>
                                     </div>
-                                    <textarea class="form-control" id='descricaoevento' aria-label="With textarea"></textarea>
+                                    <textarea class="form-control" style="resize: none;" id='descricaoevento' aria-label="With textarea"></textarea>
                                 </div>
                             <div class="modal-footer">
                                 <button type="button" id="enviar" class="btn btn-primary">Salvar</button>
@@ -133,7 +133,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Descrição</span>
                                 </div>
-                                <textarea class="form-control" id='novodescricaoevento' aria-label="With textarea"></textarea>
+                                <textarea class="form-control" style="resize: none;" id='novodescricaoevento' aria-label="With textarea"></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="criar" class="btn btn-primary">Criar Evento</button>
