@@ -2,22 +2,24 @@
 {{-- refatorar esta view   --}}
 
 @section('conteudo')
-<div class="" style="text-align:center;margin-left:1%;width:100%;margin-right:14%">
+<div id="tudo" style="text-align:center;margin-left:4%;width:100%">
   <div class="row">
-    <div class="col-2">
-      <div class="card" style="max-width: 300px;">
+    <div id="cont" class="col-sm-2">
+      <div class="card" style="width: 90%; min-width:150px">
         <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
-            <p class="card-text">Vejamos</p>
+            <p class="card-text">Coloque aqui algo, ainda a implementar</p>
             <button id="alterarperfil" class="btn btn-primary">Alterar perfil</button>
             <p></p>
             <button id="trocarfoto" class="btn btn-primary">Trocar foto</button>
         </div>
       </div>
     </div>
-    <div class="col-4">
-      <div class="card" id="fotoupload" style="width: auto; display: none">
+
+    <div id="cont1" class="col-md-4">
+      <p></p>
+      <div class="card" id="fotoupload" style="width: 90%; display: none">
         <div class="card-body">
           <h5 class="card-title">Selecionar foto</h5>
           <hr>
@@ -34,26 +36,26 @@
         </div>
       </div>
       <p id="para"style="display:none"></p>
-      <div class="card" style="width: auto;">
+      <div id="cont2" class="card" style="width: 90%;">
         <div class="card-body">
           <h5 class="card-title">Eventos para hoje</h5>
           <hr>
         <h6 class="card-subtitle mb-2 text-muted"></h6>
           <div class="row" style="text-align:center;font-weight:bold">
-            <div class="col-sm">
+            <div class="col-6">
               <p class="card-text">Nome</p>
             </div>
-            <div class="col-sm">
+            <div class="col-6">
               Data
             </div>
           </div>
           <div class="row" style="text-align:center">
-              <div class="col-sm"> 
+              <div class="col-6"> 
                 @foreach ( $eventos as $evento)
                   {{$evento->nome}}
                 @endforeach
               </div>
-              <div class="col-sm"> 
+              <div class="col-6"> 
                 @foreach ( $eventos as $evento)
                   {{date("d/m/Y H:i:s",strtotime($evento->data_ag))}}
                 @endforeach
@@ -62,26 +64,26 @@
         </div>
       </div>
       <p></p>
-      <div class="card" style="width: auto;">
+      <div id="cont3" class="card" style="width: 90%;">
         <div class="card-body" style="text-align:left">
           <h5 class="card-title" >Usuários online</h5>
           <hr>
           <h6 class="card-subtitle mb-2 text-muted">Total: {{$user = DB::table('usuarios')->where('online',1)->count()}}</h6>
           <div class="container">
             <div class="row">
-              <div class="col-sm">
+              <div class="col-6">
                 <p class="card-text">Nome</p>
               </div>
-              <div class="col-sm">
+              <div class="col-6">
                 Status
               </div>
             </div>
           @foreach ( $usuarios as $usuario)
             <div class="row">
-              <div class="col-sm">
+              <div class="col-6">
                 <p class="card-text"><strong>{{$usuario->nome}}</strong></p>
               </div>
-              <div class="col-sm">
+              <div class="col-6">
                 <div style="color:white;background-color:#6ab263;border-radius:5px;width:60px;text-align:center">Online</div>
               </div>
             </div>
@@ -91,8 +93,9 @@
       </div>
     </div>
 
-    <div class="col-6">
-      <div class="card" style="max-width: 90%">
+    <div id="cont4"class="col-md-6">
+      <p></p>
+      <div class="card" style="width: 90%">
         <div class="card-header">{{ __('Criar novo acesso') }}</div>       
           <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
@@ -170,4 +173,6 @@
     </div>
   </div>
 </div>
+<p></p>
+
 @endsection

@@ -21,6 +21,35 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+       @media only screen and (max-width: 629px) {
+
+            #cont {
+                width: 100%;
+                margin-left: 5%;
+            }
+
+            #cont1 {
+                width: 100%;
+                margin-left: 5%;
+            }
+
+            #cont2 {
+                width: 100%;
+                
+            }
+
+            #cont3 {
+                width: 100%;
+                
+            }
+            
+            #cont4 {
+                width: 100%;
+                margin-left: 5%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app">
