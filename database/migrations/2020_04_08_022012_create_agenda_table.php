@@ -16,11 +16,21 @@ class CreateAgendaTable extends Migration
         Schema::create('agenda', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('usuario_id')->unsigned();
+            $table->string('tipo_atividade');
+            $table->string('status_atividade');
             $table->string('nome');
-            $table->timestamp('data_ag')->nullable();
-            $table->timestamp('data_fim')->nullable();
-            $table->string('descricao');
-            $table->string('categoria');
+            $table->string('celular');
+            $table->string('endereco');
+            $table->string('cidade');
+            $table->timestamp('data');
+            $table->string('recomendante');
+            $table->string('recomendações');
+            $table->int('q_rec');
+            $table->string('atuacao');
+            $table->string('pot_negocio');
+            $table->timestamp('data_ag');
+            $table->timestamp('data_fim');
+            $table->string('observacao')->nullable();
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('no action');
         });
     }

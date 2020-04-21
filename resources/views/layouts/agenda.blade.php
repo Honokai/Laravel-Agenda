@@ -45,7 +45,6 @@
           timezone: 'America/Fortaleza',
           locale:'pt-br',
           height: 600,
-          themeSystem: 'bootstrap',
           overflow: true,
           contentHeight: "auto",
           contentWidth: "auto",
@@ -233,6 +232,7 @@
                             </div>
                         </li>
                     @endguest
+                    <img src="./img/logo.png" >
                 </ul>
             </div>
         </div>

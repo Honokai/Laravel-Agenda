@@ -67,6 +67,7 @@
                                 </div>
                             </li>
                         @endguest
+                        <img src="./img/logo.png" >
                     </ul>
                 </div>
             </div>

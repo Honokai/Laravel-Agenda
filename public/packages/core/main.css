@@ -17,7 +17,7 @@ body .fc {
 --------------------------------------------------------------------------------------------------*/
 .fc-highlight {
   /* when user is selecting cells */
-  background: #bce8f1;
+  background: #4fb0c4;
   opacity: 0.3;
 }
 
@@ -714,8 +714,8 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
 /* "primary" coloring */
 .fc-button-primary {
   color: #fff;
-  background-color: #2C3E50;
-  border-color: #2C3E50;
+  background-color: #010920;
+  border-color: #010920;
 }
 
 .fc-button-primary:hover {

@@ -27,17 +27,35 @@
                         <div class="tab-pane active" id="tabevento" role="tabpanel">
                                 <div class="input-group mb-3" style="float:left">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="">Categoria</span>
+                                        <span class="input-group-text" id="">Status</span>
                                     </div>
-                                    <select type="text" id='categoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
+                                    <select type="text" id='novacategoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
                                         <option value=""></option>
-                                        <option value="Crítico">Crítico</option>
-                                        <option value="Atenção">Atenção</option>
+                                        <option value="Aberto">Aberto</option>
+                                        <option value="ANF">ANF</option>
+                                        <option value="FLW">FLW</option>
+                                        <option value="AB">AB</option>
+                                        <option value="TED">TED</option>
+                                        <option value="D">D</option>
+                                        <option value="X">X</option>
+                                        <option value="OK">OK</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3" style="float:left">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="">Nome Evento</span>
+                                        <span class="input-group-text" id="">Atividade</span>
+                                    </div>
+                                    <select type="text" id='categoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
+                                        <option value=""></option>
+                                        <option value="PV">PV</option>
+                                        <option value="SV">SV</option>
+                                        <option value="VR">VR</option>
+                                        <option value="LIG">LIG</option>
+                                    </select>
+                                </div>
+                                <div class="input-group mb-3" style="float:left">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Nome</span>
                                     </div>
                                     <input type="text" id='nomevento' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
@@ -91,17 +109,35 @@
                         <div class="tab-pane" id="Criarevento" role="tabpanel">
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Categoria</span>
+                                    <span class="input-group-text" id="">Status</span>
                                 </div>
                                 <select type="text" id='novacategoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
                                     <option value=""></option>
-                                    <option value="Crítico">Crítico</option>
-                                    <option value="Atenção">Atenção</option>
+                                    <option value="Aberto">Aberto</option>
+                                    <option value="ANF">ANF</option>
+                                    <option value="FLW">FLW</option>
+                                    <option value="AB">AB</option>
+                                    <option value="TED">TED</option>
+                                    <option value="D">D</option>
+                                    <option value="X">X</option>
+                                    <option value="OK">OK</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Nome Evento</span>
+                                    <span class="input-group-text" id="">Atividade</span>
+                                </div>
+                                <select type="text" id='novacategoria' class="form-control" aria-label="Categoria" aria-describedby="basic-addon1">
+                                    <option value=""></option>
+                                    <option value="PV">PV</option>
+                                    <option value="SV">SV</option>
+                                    <option value="VR">VR</option>
+                                    <option value="LIG">LIG</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3" style="float:left">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Nome</span>
                                 </div>
                                 <input type="text" id='novonomevento' class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
