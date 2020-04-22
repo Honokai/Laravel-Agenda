@@ -13,6 +13,7 @@
             <button id="alterarperfil" class="btn btn-primary">Alterar perfil</button>
             <p></p>
             <button id="trocarfoto" class="btn btn-primary">Trocar foto</button>
+            <button id="cardrelatorio" class="btn btn-primary" >Relatorio</button>
         </div>
       </div>
     </div>
@@ -30,12 +31,40 @@
                 <input id="foto" type="file" name="arquivo">
                 <p></p>
               </form>
-              <button id="enviarfoto" class="btn btn-info">Enviar</button>
+              <button id="enviarfoto" class="btn btn-primary">Enviar</button>
             </div>
           </div>
         </div>
       </div>
       <p id="para"style="display:none"></p>
+      <div class="card" id="relatorio" style="width: 90%; display: none">
+        <div class="card-body">
+          <h5 class="card-title">Gerar Relatórios</h5>
+          <hr>
+          <div class="row" style="text-align:center;font-weight:bold">
+            <div class="col-sm">
+            <div class="input-group mb-3" style="float:left">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="">Tipo de relatório</span>
+              </div>
+              <select class="custom-select" id="tiporelatorio">
+                <option value=""></option>
+                <option value="todos">Todos</option>
+                <option value="usuário">Usuário atual</option>
+              </select> 
+            </div>
+            <div class="input-group mb-3" style="float:left">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="">Nome da planilha</span>
+              </div>
+              <input type="text" id="nomeplanilha" class="form-control">
+            </div>
+              <button id="enviarrelatorio" class="btn btn-primary">Enviar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p id="par"style="display:none"></p>
       <div id="cont2" class="card" style="width: 90%;">
         <div class="card-body">
           <h5 class="card-title">Eventos para hoje</h5>

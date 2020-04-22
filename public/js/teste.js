@@ -5,6 +5,32 @@ $(document).ready(function(){
         document.getElementById("para").style.display = "block";
     });
 
+    $("#cardrelatorio").on("click", function(){
+        document.getElementById("par").style.display = "block";
+        document.getElementById("relatorio").style.display = "block";
+    });
+    
+    $("#enviarrelatorio").on("click", function(){
+        let login = $('#userid').val();
+        let relatorio = $('#tiporelatorio').val();
+        let titulo = $('#nomeplanilha').val();
+        $.ajax({
+            url: "relatorios/tipo1.php",
+            type: "POST",
+            data: { "id": login,
+                    "relatorio":relatorio,
+                    "titulo":titulo
+            },
+            success: function(data){
+                console.log(data);
+            },
+            error: function(data) {
+                console.log(JSON.parse(data.responseText));
+            }
+        });
+    });
+
+
     $("#enviarfoto").on("click", function(){
         var form = new FormData(document.getElementById("upload")); //necessário us
 

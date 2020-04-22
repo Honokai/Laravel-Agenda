@@ -145,6 +145,7 @@
               success: function(data){
                 console.log(JSON.parse(data));
                 let resposta = JSON.parse(data);
+                document.getElementById("idevento").value = resposta.id;
                 document.getElementById("atividade").value = resposta.tipo_atividade;
                 document.getElementById("status").value = resposta.status_atividade;
                 document.getElementById("nome").value = resposta.nome;
@@ -153,6 +154,8 @@
                 document.getElementById("cidade").value = resposta.cidade;
                 document.getElementById("data").value =  resposta.data.substring(0,10);
                 document.getElementById("hora").value = resposta.data.substring(11,19);
+                document.getElementById("datainicio").value = resposta.data_ag.substring(0,10);
+                document.getElementById("horarioinicio").value = resposta.data_ag.substring(11,19);
                 document.getElementById("recomendante").value = resposta.recomendante;
                 document.getElementById("recomendacoes").value = resposta.recomendações;
                 document.getElementById("qtderecs").value = resposta.q_rec;

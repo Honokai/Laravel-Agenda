@@ -2,6 +2,13 @@ $(document).ready(function(){
    
     $('.hora').mask("00:00:00");
     $(".celular").mask("(00) 00000-0000");    
+    $(".potencial").mask("000.000.000,00",{reverse: true});
+
+    $(".endereco,.cidade").focusout(function(e){ //pegas os inputs com classe endereco e cidade e ao perder o foco
+        this.value = $(this).val().toUpperCase(); //coloca os caracteres possíveis em maiúscula 
+    });
+
+
     $('#e-mail').blur(function(){
         var valor = document.getElementById('e-mail').value;
         $.ajax({
@@ -24,56 +31,60 @@ $(document).ready(function(){
     $('#enviar').on('click', function(){
         let id = $('#idevento').val();
         let login = $('#login').val();
-        let nome = $('#nomevento').val();
-        let datainicio = $('#datainicio').val();
-        let horainicio = $('#horarioinicio').val();
-        let datatermino = $('#datatermino').val();
-        let horatermino = $('#horariotermino').val();
-        let descricao = $('#descricaoevento').val();
-        let categoria = $('#categoria').val();
-        let nome1 = $('#namevento').val();
-        let datainicio1 = $('#dataevento').val();
-        let horainicio1 = $('#horaevento').val();
-        let datatermino1 = $('#datet').val();
-        let horatermino1 = $('#horat').val();
-        let descricao1 = $('#descricao').val();
-
+        let atividade = $("#atividade").val();
+        let status = $("#status").val(); 
+        let nome = $('#nome').val();
+        let celular = $('#celular').val();
+        let endereco = $('#endereco').val();
+        let cidade = $('#cidade').val();
+        let data = $('#data').val();
+        let hora = $('#hora').val();
+        let recomendante = $('#recomendante').val();
+        let recomendacoes = $("#recomendacoes").val();
+        let qtderec = $("#qtderecs").val();
+        let atuacao = $("#atuacao").val();
+        let potencial = $("#potencial").val();
+        let iniciovento = $("#datainicio").val();
+        let horarioinicio = $("#horarioinicio").val();
+        let observacoes = $("#observacoes").val();
+        console.log(iniciovento+" "+horarioinicio);
         $.ajax({
             url: 'api/update/modalupdate.php',
             type: 'POST',
             data:{
-                "id":id,
-                "login":login,
-                "nome":nome,
-                "datainicio":datainicio,
-                "horarioinicio":horainicio,
-                "datatermino":datatermino ,
-                "horariotermino":horatermino,
-                "descricao": descricao, //atuais novos
-                "categoria":categoria,
-                "nome1":nome1, //antigos
-                "datainicio1":datainicio1,
-                "horarioinicio1":horainicio1,
-                "datatermino1":datatermino1 ,
-                "horariotermino1":horatermino1,
-                "descricao1": descricao1
+                "id":id, //id do evento
+                "login":login, //id do usuário
+                "atividade" : atividade,
+                "status" : status,
+                "nome" : nome,
+                "celular" : celular,
+                "endereco" : endereco,
+                "cidade" : cidade ,
+                "data" : data,
+                "hora": hora,
+                "recomendante" : recomendante,
+                "recomendacoes" : recomendacoes,
+                "qrec" : qtderec,
+                "atuacao" : atuacao,
+                "potencial" : potencial,
+                "inicioevento" : iniciovento,
+                "horarioinicio" : horarioinicio,
+                "observacoes" : observacoes
             },
             success: function(data,response){
-                console.log(login);
-                console.log(response);
                 console.log(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Evento atualizado!',
+                    title: data,
                     showConfirmButton: false,
                     timer: 1500
                 });
                 $("#modal").modal('toggle');
-                setTimeout(location.reload.bind(location), 1500);
+                //setTimeout(location.reload.bind(location), 1500);
             },
             error: function(data){
-                console.log(data);
+                console.log(JSON.parse(data.responseText));
             }
 
         });
@@ -99,7 +110,7 @@ $(document).ready(function(){
           let potencial = $("#novopotencial").val();
           let iniciovento = $("#novadatainicio").val();
           let horarioinicio = $("#novohorarioinicio").val();
-          let observacoes = $("#observacoes").val();
+          let observacoes = $("#novoobservacoes").val();
           $.ajax({
             url:"api/post/cadastrar.php",
             type:"POST",
@@ -148,12 +159,6 @@ $(document).ready(function(){
       $("#excluirevento").on("click", function(){
         let id = $('#idevento').val();
         let login = $('#login').val();
-        let nome = $('#nomevento').val();
-        let datainicio = $('#datainicio').val();
-        let horainicio = $('#horarioinicio').val();
-        let datatermino = $('#datatermino').val();
-        let horatermino = $('#horariotermino').val();
-        let descricao = $('#descricaoevento').val();
         $.ajax({
             url:"api/delete/excluirevento.php",
             type:"POST",
@@ -161,9 +166,6 @@ $(document).ready(function(){
                 "_method":"DELETE",
                 "id":id,
                 "usuario":login,
-                "nome":nome,
-                "data": datainicio+' '+horainicio,
-                "termino": datatermino+' '+horatermino
             },
             success: function(data){
                 let resposta = JSON.parse(data);

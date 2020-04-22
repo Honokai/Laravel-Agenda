@@ -65,6 +65,40 @@ require_once('../../config/BancoDados.php');
     
     $resultado = $conexao->prepare($query);
     if($resultado->execute()){
+        $query = "INSERT INTO historico(
+            `usuario_id`,
+            `tipo_atividade`,
+            `status_atividade`,
+            `nome`,
+            `celular`,
+            `endereco`,
+            `cidade`,
+            `data`,
+            `recomendante`,
+            `recomendações`,
+            `q_rec`,
+            `atuacao`,
+            `pot_negocio`,
+            `data_ag`,
+            `observacao`) VALUES (". 
+            $usuario. ",'". 
+            $atividade . "','".
+            $status . "','".
+            $nome ."','". 
+            $celular ."','".
+            $endereco ."','".
+            $cidade ."','".
+            $data ."','".
+            $recomendante ."','".
+            $recomendacoes ."','".
+            $qrec ."','".
+            $atuacao ."','".
+            $potencial ."','".
+            $inicio . "','".
+            $observacoes.
+            "')";
+            $resultado = $conexao->prepare($query);
+            $resultado->execute();
         echo json_encode("Evento adicionado com sucesso.");
     }else{
         http_response_code(301);

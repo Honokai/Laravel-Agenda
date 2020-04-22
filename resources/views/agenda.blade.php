@@ -67,14 +67,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Endereço</span>
                         </div>
-                        <input type="text" id="endereco" class="form-control">
+                        <input type="text" id="endereco" class="form-control endereco">
                     </div>
 
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Cidade</span>
                         </div>
-                        <input type="text" id="cidade" class="form-control ">
+                        <input type="text" id="cidade" class="form-control cidade">
                     </div>
                     
                     <div class="row">
@@ -141,7 +141,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Potencial do negócio</span>
                         </div>
-                        <input type="text" id="potencial" class="form-control ">
+                        <input type="text" id="potencial" class="form-control potencial">
                     </div>
 
                     <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
@@ -242,14 +242,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Endereço</span>
                         </div>
-                        <input type="text" id="novoendereco" class="form-control ">
+                        <input type="text" id="novoendereco" class="form-control endereco">
                     </div>
                     
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Cidade</span>
                         </div>
-                        <input type="text" id="novocidade" class="form-control ">
+                        <input type="text" id="novocidade" class="form-control cidade">
                     </div>
                     
                     <div class="row">
@@ -316,7 +316,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Potencial do negócio</span>
                         </div>
-                        <input type="text" id="novopotencial" class="form-control ">
+                        <input type="text" id="novopotencial" class="form-control potencial">
                     </div>
 
                     <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
@@ -341,7 +341,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Observações</span>
                         </div>
-                        <textarea class="form-control" style="resize: none;" id="observacoes" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" style="resize: none;" id="novoobservacoes" aria-label="With textarea"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

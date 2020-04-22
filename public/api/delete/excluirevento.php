@@ -5,7 +5,7 @@ if($_POST["_method"] == "DELETE"){
     $bd = new BancoDados();
     $conexao = $bd->conexao();
     $query = "DELETE FROM agenda 
-                where id=".$_POST['id']." and usuario_id=".$_POST['usuario']." and data_ag='".$_POST['data']."' and data_fim='".$_POST['termino']."'";
+                where id=".$_POST['id']." and usuario_id=".$_POST['usuario'];
     $resultado = $conexao->prepare($query);
     $resultado->execute();
     $row = $resultado->rowCount();

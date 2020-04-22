@@ -1,4 +1,6 @@
 <?php 
+
+  //manda campos selecionados para a criação dos eventos
   require_once("../../config/BancoDados.php");
   $banco = new BancoDados;
   date_default_timezone_set('America/Fortaleza');
@@ -12,9 +14,9 @@
   $result->execute(); $dados = []; $evento = array();
   
   while($linha = $result->fetch(PDO::FETCH_ASSOC)){
-      array_push($evento, $linha);
+    array_push($evento, $linha);
   }
 
   header('Content-Type: application/json');
-  echo json_encode($evento, true), "\n";
+  echo json_encode($evento, true);
 ?>
