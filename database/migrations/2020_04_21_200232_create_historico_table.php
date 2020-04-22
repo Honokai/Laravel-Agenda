@@ -8,7 +8,7 @@ class CreateHistoricoTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * Tabela historica de alteração dos itens cadastrados
      * @return void
      */
     public function up()

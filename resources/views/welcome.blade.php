@@ -72,6 +72,7 @@
                     @else
                         <a href="{{ route('login') }}">Entrar</a>
                     @endauth
+                    <img src="./img/logo.png">
                 </div>
             @endif
 
