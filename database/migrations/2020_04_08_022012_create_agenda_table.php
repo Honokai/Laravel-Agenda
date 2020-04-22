@@ -24,13 +24,12 @@ class CreateAgendaTable extends Migration
             $table->string('cidade');
             $table->timestamp('data');
             $table->string('recomendante');
-            $table->string('recomendações');
+            $table->string('recomendações', 100);
             $table->int('q_rec');
             $table->string('atuacao');
             $table->string('pot_negocio');
             $table->timestamp('data_ag');
-            $table->timestamp('data_fim');
-            $table->string('observacao')->nullable();
+            $table->string('observacao', 255)->nullable();
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('no action');
         });
     }

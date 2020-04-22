@@ -103,15 +103,9 @@
             }
           },
           dateClick: function(dateClickInfo ){
-            document.getElementById("novodatainicio").value = dateClickInfo.dateStr;
-            document.getElementById("novodatatermino").value = dateClickInfo.dateStr;
-            $("#tudo").modal('toggle');
-            document.getElementById("abaevento").className = "nav-link";
-            document.getElementById("abacriar").className = "nav-link active";
-            document.getElementById("tabevento").className = "tab-pane";
-            document.getElementById("Criarevento").className = "tab-pane active";
-            document.getElementById("acontecimentos").className = "nav-link";
-            document.getElementById("feedback").className = "tab-pane";
+            document.getElementById("novadatainicio").value = dateClickInfo.dateStr;
+            document.getElementById("novadatainicio").value = $("#hora");
+            $("#criarevento").modal('toggle');
           },
           eventDrop: function(info){
             timezone: 'America/Noronha';
@@ -140,12 +134,7 @@
             });
           },  
           eventClick: function(info){
-            document.getElementById("abacriar").className = "nav-link";
-            document.getElementById("abaevento").className = "nav-link active";
-            document.getElementById("Criarevento").className = "tab-pane";
-            document.getElementById("tabevento").className = "tab-pane active";
-            document.getElementById("acontecimentos").className = "nav-link";
-            document.getElementById("feedback").className = "tab-pane";
+            
             $.ajax({
               url:"api/get/dadoevento.php",
               type: 'GET',

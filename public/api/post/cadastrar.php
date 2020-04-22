@@ -11,21 +11,19 @@ require_once('../../config/BancoDados.php');
     $char->execute();
     $usuario = $_POST['login'];
     $nome = $_POST['nome'] == "" ? NULL : $_POST['nome'];
-    $categoria = $_POST['categoria'];
+    $categoria = $_POST['categoria']; //mudar para atividade
     $inicio = $_POST['datainicio']. " " . $_POST['horarioinicio'];
-    $fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
-    $descricao = $_POST['descricao'];
+    //$fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
+    $descricao = $_POST['descricao']; //mudar para observação
     $query = "INSERT INTO agenda(
         `usuario_id`,
         `nome`,
         `data_ag`,
-        `data_fim`,
         `descricao`, 
         `categoria`) VALUES (". 
         $usuario. ",'". 
         $nome ."','". 
         $inicio . "','". 
-        $fim . "','". 
         $descricao . "','".
         $categoria.
         "')";
