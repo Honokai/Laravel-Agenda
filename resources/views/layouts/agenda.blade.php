@@ -104,7 +104,6 @@
           },
           dateClick: function(dateClickInfo ){
             document.getElementById("novadatainicio").value = dateClickInfo.dateStr;
-            document.getElementById("novadatainicio").value = $("#hora");
             $("#criarevento").modal('toggle');
           },
           eventDrop: function(info){

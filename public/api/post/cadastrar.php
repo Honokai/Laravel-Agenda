@@ -4,38 +4,71 @@ ponto para cadastro de novos eventos
 */
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 require_once('../../config/BancoDados.php');
+    
     date_default_timezone_set('America/Fortaleza');
     $banco = new BancoDados;
     $conexao = $banco->conexao();
     $char = $conexao->prepare("set names utf8");
     $char->execute();
+    //variaveis recebidas pelo ajax
     $usuario = $_POST['login'];
+    $atividade = $_POST['atividade'];
+    $status = $_POST['status'];
     $nome = $_POST['nome'] == "" ? NULL : $_POST['nome'];
-    $categoria = $_POST['categoria']; //mudar para atividade
-    $inicio = $_POST['datainicio']. " " . $_POST['horarioinicio'];
+    $celular = $_POST['celular'];
+    $endereco = $_POST['endereco'];
+    $cidade = $_POST['cidade'];
+    $data = $_POST['data']. " " . $_POST['hora'];
+    $recomendante = $_POST['recomendante'];
+    $recomendacoes = $_POST['recomendacoes'];
+    $qrec = $_POST['qrec'];
+    $atuacao = $_POST['atuacao'];
+    $potencial = $_POST['potencial'];
+    $inicio = $_POST['inicioevento']. " " . $_POST['horarioinicio'];
+    $observacoes = $_POST['observacoes']; 
+    
     //$fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
-    $descricao = $_POST['descricao']; //mudar para observação
+    
     $query = "INSERT INTO agenda(
         `usuario_id`,
+        `tipo_atividade`,
+        `status_atividade`,
         `nome`,
+        `celular`,
+        `endereco`,
+        `cidade`,
+        `data`,
+        `recomendante`,
+        `recomendações`,
+        `q_rec`,
+        `atuacao`,
+        `pot_negocio`,
         `data_ag`,
-        `descricao`, 
-        `categoria`) VALUES (". 
+        `observacao`) VALUES (". 
         $usuario. ",'". 
+        $atividade . "','".
+        $status . "','".
         $nome ."','". 
-        $inicio . "','". 
-        $descricao . "','".
-        $categoria.
+        $celular ."','".
+        $endereco ."','".
+        $cidade ."','".
+        $data ."','".
+        $recomendante ."','".
+        $recomendacoes ."','".
+        $qrec ."','".
+        $atuacao ."','".
+        $potencial ."','".
+        $inicio . "','".
+        $observacoes.
         "')";
 
     
     $resultado = $conexao->prepare($query);
-    if($_POST['nome'] != "" && $inicio < $fim){
-        $resultado->execute();
+    if($resultado->execute()){
         echo json_encode("Evento adicionado com sucesso.");
     }else{
         http_response_code(301);
-        echo json_encode("Verifique os campos informados.");
+        echo json_encode($query);
     }
        
 }

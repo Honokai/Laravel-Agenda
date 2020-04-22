@@ -1,8 +1,7 @@
 $(document).ready(function(){
-    $('#hoje').modal('toggle');
    
     $('.hora').mask("00:00:00");
-    
+    $(".celular").mask("(00) 00000-0000");    
     $('#e-mail').blur(function(){
         var valor = document.getElementById('e-mail').value;
         $.ajax({
@@ -79,30 +78,52 @@ $(document).ready(function(){
 
         });
       });
+
+      $("#novohora").focusout(function(){
+        document.getElementById('novohorarioinicio').value = $("#novohora").val();
+      });
       $('#criar').on("click", function(){
           let login = $('#login').val();
-          let nome = $('#novonomevento').val();
-          let datainicio = $('#novodatainicio').val();
-          let horainicio = $('#novohorarioinicio').val();
-          let datatermino = $('#novodatatermino').val();
-          let horatermino = $('#novohorariotermino').val();
-          let descricao = $('#novodescricaoevento').val();
-          let categoria = $('#novacategoria').val();
+          let atividade = $("#novoatividade").val();
+          let status = $("#novostatus").val(); 
+          let nome = $('#novonome').val();
+          let celular = $('#novocelular').val();
+          let endereco = $('#novoendereco').val();
+          let cidade = $('#novocidade').val();
+          let data = $('#novodata').val();
+          let hora = $('#novohora').val();
+          let recomendante = $('#novorecomendante').val();
+          let recomendacoes = $("#novorecomendacoes").val();
+          let qtderec = $("#novoqtderecs").val();
+          let atuacao = $("#novoatuacao").val();
+          let potencial = $("#novopotencial").val();
+          let iniciovento = $("#novadatainicio").val();
+          let horarioinicio = $("#novohorarioinicio").val();
+          let observacoes = $("#observacoes").val();
           $.ajax({
             url:"api/post/cadastrar.php",
             type:"POST",
             data: {
-                "login":login,
-                "nome":nome,
-                "datainicio":datainicio,
-                "horarioinicio":horainicio,
-                "datatermino":datatermino ,
-                "horariotermino":horatermino,
-                "descricao": descricao,
-                "categoria":categoria
+                "login" : login,
+                "atividade" : atividade,
+                "status" : status,
+                "nome" : nome,
+                "celular" : celular,
+                "endereco" : endereco,
+                "cidade" : cidade ,
+                "data" : data,
+                "hora": hora,
+                "recomendante" : recomendante,
+                "recomendacoes" : recomendacoes,
+                "qrec" : qtderec,
+                "atuacao" : atuacao,
+                "potencial" : potencial,
+                "inicioevento" : iniciovento,
+                "horarioinicio" : horarioinicio,
+                "observacoes" : observacoes
             },
             success: function(data){
-                
+                console.log(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -113,6 +134,7 @@ $(document).ready(function(){
                 setTimeout(location.reload.bind(location), 1500);
             },
             error: function(data){
+                console.log(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'info',

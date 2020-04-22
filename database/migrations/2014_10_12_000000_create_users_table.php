@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('online', $autoincrement = false, $unsigned = false)->default('0');
-            $table->int('acesso'); //determina usario ou admin
+            $table->integer('acesso')->nullable(); //determina usario ou admin
         });
     }
 

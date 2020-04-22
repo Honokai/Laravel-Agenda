@@ -67,14 +67,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Endereço</span>
                         </div>
-                        <input type="text" id="endereco" class="form-control celular">
+                        <input type="text" id="endereco" class="form-control">
                     </div>
 
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Cidade</span>
                         </div>
-                        <input type="text" id="cidade" class="form-control celular">
+                        <input type="text" id="cidade" class="form-control ">
                     </div>
                     
                     <div class="row">
@@ -101,14 +101,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Recomendante</span>
                         </div>
-                        <input type="text" id="recomendante" class="form-control celular">
+                        <input type="text" id="recomendante" class="form-control ">
                     </div>
                     
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Recomendações</span>
                         </div>
-                        <input type="text" id="recomendacoes" class="form-control celular">
+                        <input type="text" id="recomendacoes" class="form-control ">
                     </div>
                     
                     <div class="row">
@@ -118,7 +118,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Qtde recs</span>
                                 </div>
-                                <input type="number" id="qtderecs" class="form-control celular">
+                                <input type="number" id="qtderecs" class="form-control ">
                             </div>
                         </div>
 
@@ -141,7 +141,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Potencial do negócio</span>
                         </div>
-                        <input type="text" id="potencial" class="form-control celular">
+                        <input type="text" id="potencial" class="form-control ">
                     </div>
 
                     <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
@@ -242,14 +242,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Endereço</span>
                         </div>
-                        <input type="text" id="novoendereco" class="form-control celular">
+                        <input type="text" id="novoendereco" class="form-control ">
                     </div>
                     
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Cidade</span>
                         </div>
-                        <input type="text" id="novocidade" class="form-control celular">
+                        <input type="text" id="novocidade" class="form-control ">
                     </div>
                     
                     <div class="row">
@@ -276,14 +276,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Recomendante</span>
                         </div>
-                        <input type="text" id="novorecomendante" class="form-control celular">
+                        <input type="text" id="novorecomendante" class="form-control ">
                     </div>
                     
                     <div class="input-group mb-3" style="float:left">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Recomendações</span>
                         </div>
-                        <input type="text" id="novorecomendacoes" class="form-control celular">
+                        <input type="text" id="novorecomendacoes" class="form-control ">
                     </div>
                     
                     <div class="row">
@@ -293,7 +293,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Qtde recs</span>
                                 </div>
-                                <input type="number" id="novoqtderecs" class="form-control celular">
+                                <input type="number" id="novoqtderecs" class="form-control ">
                             </div>
                         </div>
 
@@ -316,7 +316,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">Potencial do negócio</span>
                         </div>
-                        <input type="text" id="novopotencial" class="form-control celular">
+                        <input type="text" id="novopotencial" class="form-control ">
                     </div>
 
                     <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
