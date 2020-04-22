@@ -64,7 +64,7 @@
           header: {
             left: 'prev,next today',
             center: 'title',
-            right: 'timeGridWeek,timeGridDay,dayGridMonth,listWeek'
+            right: 'timeGridDay,timeGridWeek,dayGridMonth,listWeek'
           },
           eventSources: [{
             url: "api/get/calendar.php",
@@ -79,20 +79,20 @@
               var user = document.createElement('div');
               user.innerHTML = info.event.extendedProps.description;
               info.el.lastChild.lastChild.appendChild(user);
-              if(info.event.extendedProps.categoria == "Crítico"){
+              if(info.event.extendedProps.atividade == "PV"){
                 info.el.style.backgroundColor  = "#ff6347";
                 info.el.style.borderColor = "black";
               }
-              if(info.event.extendedProps.categoria == "Atenção"){
+              if(info.event.extendedProps.atividade == "SV"){
                 info.el.style.backgroundColor  = "#ffa900";
                 info.el.style.borderColor = "blue";
               }
             }else{
-              if(info.event.extendedProps.categoria == "Crítico"){
+              if(info.event.extendedProps.atividade == "PV"){
                 info.el.style.backgroundColor  = "#ff6347";
                 info.el.style.borderColor = "black";
               }
-              if(info.event.extendedProps.categoria == "Atenção"){
+              if(info.event.extendedProps.atividade == "SV"){
                 info.el.style.backgroundColor  = "#ffa900";
                 info.el.style.borderColor = "blue";
               }
@@ -114,7 +114,6 @@
               data: {
                 login: {{Auth::id()}},
                 data: info.event.start.toString(),
-                dataend: info.event.end.toString(),
                 nome: info.event.title
               }
             });
@@ -143,24 +142,27 @@
                 data: info.event.start.toString(),
                 nome: info.event.title
               },
-              complete: function(data, response, status){
-                let resposta = JSON.parse(data.responseText);
-                document.getElementById('idevento').value = resposta.id;
-                document.getElementById('nomevento').value = resposta.nome;
-                document.getElementById('datainicio').value = resposta.data_ag.substring(0,10);
-                document.getElementById('horarioinicio').value = resposta.data_ag.substring(11);
-                document.getElementById('datatermino').value = resposta.data_fim.substring(0,10);
-                document.getElementById('horariotermino').value = resposta.data_fim.substring(11);
-                document.getElementById('descricaoevento').value = resposta.Descricao;
-                document.getElementById('namevento').value = resposta.nome;
-                document.getElementById('dataevento').value = resposta.data_ag.substring(0,10);
-                document.getElementById('horaevento').value = resposta.data_ag.substring(11);
-                document.getElementById('datet').value = resposta.data_fim.substring(0,10);
-                document.getElementById('horat').value = resposta.data_fim.substring(11);
-                document.getElementById('descricao').value = resposta.Descricao;
-                document.getElementById('feedbackdescricao').value = resposta.feedback;
-                document.getElementById('catevento').value = resposta.categoria;
-                document.getElementById('categoria').value = resposta.categoria;
+              success: function(data){
+                console.log(JSON.parse(data));
+                let resposta = JSON.parse(data);
+                document.getElementById("atividade").value = resposta.tipo_atividade;
+                document.getElementById("status").value = resposta.status_atividade;
+                document.getElementById("nome").value = resposta.nome;
+                document.getElementById("celular").value = resposta.celular;
+                document.getElementById("endereco").value = resposta.endereco;
+                document.getElementById("cidade").value = resposta.cidade;
+                document.getElementById("data").value =  resposta.data.substring(0,10);
+                document.getElementById("hora").value = resposta.data.substring(11,19);
+                document.getElementById("recomendante").value = resposta.recomendante;
+                document.getElementById("recomendacoes").value = resposta.recomendações;
+                document.getElementById("qtderecs").value = resposta.q_rec;
+                document.getElementById("atuacao").value = resposta.atuacao;
+                document.getElementById("potencial").value = resposta.pot_negocio;
+                document.getElementById("observacoes").value = resposta.observacao;
+
+              },
+              error: function(data){
+
               }
             });
             $("#tudo").modal('toggle');
@@ -226,15 +228,9 @@
         </div>
     </nav>
     <p></p>
-  <input type="text" id='login' style="display: none;" value="{{ Auth::id() }}">
-  <input type="text" id='catevento' style="display: none;" value="">
+    <input type="text" id='login' style="display: none;" value="{{ Auth::id() }}">
     <input type="text" id='idevento' style="display: none;" value="">
-    <input type="text" id='namevento' style="display: none;" value="">
-    <input type="text" id='dataevento' style="display: none;" value="">
-    <input type="text" id='horaevento' style="display: none;" value="">
-    <input type="text" id='datet' style="display: none;" value="">
-    <input type="text" id='horat' style="display: none;" value="">
-    <input type="text" id='descricao' style="display: none;" value="">
+    
     @yield('conteudo')
 </body>
 </html>
