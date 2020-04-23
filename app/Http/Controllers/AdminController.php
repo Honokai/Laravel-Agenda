@@ -5,7 +5,8 @@ use Symfony\Contracts\EventDispatcher\Event;
 use Illuminate\Http\Request;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
-use App\Events\EventoProximo;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
 class AdminController extends Controller
 {
     /**

@@ -10,7 +10,7 @@ $(document).ready(function(){
         document.getElementById("relatorio").style.display = "block";
     });
     
-    $("#enviarrelatorio").on("click", function(){
+    $("#enviarrelatorio").on("click", function(element){
         let login = $('#userid').val();
         let relatorio = $('#tiporelatorio').val();
         let titulo = $('#nomeplanilha').val();
@@ -22,10 +22,12 @@ $(document).ready(function(){
                     "titulo":titulo
             },
             success: function(data){
-                console.log(data);
+                //console.log(data);
+                let resposta = JSON.parse(data);
+                $('#enviarrelatorio').after("<a class='btn btn-success' target='blank' "+"href='/planilha/"+resposta.planilha+"'>"+ resposta.planilha +"</a>");
             },
             error: function(data) {
-                console.log(JSON.parse(data.responseText));
+                console.log("Erro");
             }
         });
     });

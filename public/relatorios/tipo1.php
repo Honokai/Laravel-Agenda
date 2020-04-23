@@ -15,7 +15,7 @@ $char_set->execute();
 $query = "SELECT u.nome as advisor, h.* FROM usuarios u JOIN historico h on u.id = h.usuario_id";
 $resultado = $conexao->prepare($query);
 $resultado->execute();
-
+$caminho = "../file/";
 criarCabecalho();
 
 
@@ -81,13 +81,15 @@ criarCabecalho();
         $i++;
     }
 
-    
     $planilha->getActiveSheet()->getColumnDimension('a')->setAutoSize(true);
     $planilha->getActiveSheet()->getColumnDimension('b')->setAutoSize(true);
     $escrever = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($planilha, "Xlsx");
-    $escrever->save("C:/users/eff/desktop/{$titulo}.xlsx"); //nome final do arquivo
+    $escrever->save("../../storage/app/{$titulo}.xlsx"); //nome final do arquivo
 
-
-echo json_encode("Legal");
+    header('Content-Type: application/download');
+    header('Content-Disposition: attachment; filename="file.xlsx"');
+    echo json_encode(array(
+        "planilha"=>"{$titulo}.xlsx"
+    ));
 
 ?>
