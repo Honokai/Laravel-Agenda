@@ -1,0 +1,93 @@
+html, body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+section {
+    margin-top: 100px;
+}
+
+#trocarfoto{
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+    border-radius: 25px;
+}
+
+#trocarfoto:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: shadow-pulse 1s 1;
+}
+
+
+#cardrelatorio{
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+    border-radius: 25px;
+}
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(72, 20, 133, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 15px rgba(72, 20, 133, 0.3);
+  }
+}
+
+#cardrelatorio:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: shadow-pulse 1s 1;
+}
+
+body{
+    size: auto;
+    background-repeat: no-repeat;
+    /*background-image: url("");*/
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    font-size: 84px;
+}
+
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+    .m-b-md {
+    margin-bottom: 30px;
+}

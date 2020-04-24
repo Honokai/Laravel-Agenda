@@ -177,7 +177,8 @@
 </head>
 <body>  
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+      <img style="width:50px;height:40px"src="./img/logo.png" >
         <div class="container">
             <a class="navbar-brand" href="{{ url('/agenda') }}">
                 {{ config('app.name', 'Agenda') }}
@@ -225,7 +226,6 @@
                             </div>
                         </li>
                     @endguest
-                    <img src="./img/logo.png" >
                 </ul>
             </div>
         </div>

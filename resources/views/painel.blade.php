@@ -5,21 +5,18 @@
 <div id="tudo" style="text-align:center;margin-left:4%;width:100%">
   <div class="row">
     <div id="cont" class="col-sm-2">
-      <div class="card" style="width: 90%; min-width:150px">
+      <div class="card dark" style="width: 90%; min-width:150px">
         <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
-            <p class="card-text">Coloque aqui algo, ainda a implementar</p>
-            <button id="alterarperfil" class="btn btn-primary">Alterar perfil</button>
-            <p></p>
             <button id="trocarfoto" class="btn btn-primary">Trocar foto</button>
+            <p></p>
             <button id="cardrelatorio" class="btn btn-primary" >Relatorio</button>
         </div>
       </div>
     </div>
 
     <div id="cont1" class="col-md-4">
-      <p></p>
       <div class="card" id="fotoupload" style="width: 90%; display: none">
         <div class="card-body">
           <h5 class="card-title">Selecionar foto</h5>
@@ -122,8 +119,7 @@
       </div>
     </div>
 
-    <div id="cont4"class="col-md-6">
-      <p></p>
+    <div class="col-md-6">
       <div class="card" style="width: 90%">
         <div class="card-header">{{ __('Criar novo acesso') }}</div>       
           <div class="card-body">
@@ -133,7 +129,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
                         @error('name')
                             <span class="invalid-feedback" role="alert">

@@ -29,7 +29,7 @@ Route::get('/agenda', 'AdminController@agenda')->name('agenda')->middleware('ver
 Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
 
 Route::get('/', function(){
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
