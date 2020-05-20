@@ -21,6 +21,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="css/painel.css" rel="stylesheet">
     <style>
        @media only screen and (max-width: 629px) {
 
@@ -50,17 +52,15 @@
             }
         }
     </style>
-
-    
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <img style="width:50px;height:40px" src="./img/logo.png" >
+            <img style="width:50px;height:40px; border-radius:5px" src="./img/logo.png" >
             <div class="container">
                 
                 <a class="navbar-brand" href="{{ url('/agenda') }}">
-                    {{ __('Painel Administrativo') }}
+                    {{ __('Administração') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -111,6 +111,12 @@
                 </div>
             </div>
         </nav>
+
+        <section id="opcao-lateral">
+            <div id="opcao-conteudo">
+                <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
+            </div>
+        </section>
 
         <main class="main" style="width:100%">
             <p></p>

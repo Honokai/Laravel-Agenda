@@ -83,7 +83,7 @@
               </div>
               <div class="col-6"> 
                 @foreach ( $eventos as $evento)
-                  {{date("d/m/Y H:i:s",strtotime($evento->data_ag))}}
+                  {{date("d/m/Y H:i:s",strtotime($evento->data))}}
                 @endforeach
               </div>
           </div>

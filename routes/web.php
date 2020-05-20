@@ -32,6 +32,8 @@ Route::get('/agenda', 'AdminController@agenda')->name('agenda')->middleware('ver
 
 Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
 
+Route::get('/painel1', 'AdminController@painel1')->name('painel1')->middleware('verified');
+
 Route::get('/', function(){
     if(!Auth::check()){
         return view('auth/login');

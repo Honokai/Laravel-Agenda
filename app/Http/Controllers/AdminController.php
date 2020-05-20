@@ -33,6 +33,14 @@ class AdminController extends Controller
         return view('painel')->with('usuarios',$usuarios)->with('eventos',$eventos);
     }
 
+    public function painel1()
+    {
+        $id = Auth::id();
+        $usuarios = Usuario::online();
+        $eventos = Usuario::eventosProximos($id);
+        return view('painelv2')->with('usuarios',$usuarios)->with('eventos',$eventos);
+    }
+
     public function agenda(){
         $id = Auth::id();
         $eventos = Usuario::eventosProximos($id);

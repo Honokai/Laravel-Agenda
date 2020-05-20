@@ -2,6 +2,32 @@
         height: 100%;
     }
 
+    .barra1, .barra2, .barra3 {
+        width: 35px;
+        height: 2px;
+        background-color: white;
+        margin: 6px;
+        transition: 0.4s;
+    }
+    .change .barra1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-5px, 4px);
+    }
+      
+    .change .barra2 {
+        opacity: 0;
+    }
+      
+    .change .barra3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-7px, -7px);
+    }
+
+    .change .barralateral{
+        visibility: visible;
+        width: 200px;
+    }
+
     .parallax {
         /* The image used */
         background-image: url("http://2.bp.blogspot.com/-csCgQ1tXaHg/TkYWPtpSVvI/AAAAAAAAC-k/Czn0K-6DXOo/s1600/cool+hd+wallpapers+1.jpg");
@@ -21,7 +47,7 @@
         visibility: hidden;
         padding: 0;
         width: 0px;
-        background-color: #292c5c;
+        background-color: #6A66A3;
         position: fixed;
         height: 100%;
         transition: 0.5s;
@@ -31,13 +57,9 @@
     
     .barralateral a {
         visibility: inherit;
-        background-color: #020538;
-        margin-top: 15px;
-        margin-left: 20px;
-        margin-right: 20px;
+        background-color: #84A9C0;
         text-align: center;
         display: block;
-        border-radius: 25px;
         color: white;
         padding: 5px;
         text-decoration: none;
@@ -48,14 +70,14 @@
         border: solid 1px #CCC;
         -moz-box-shadow: 1px 1px 5px #999;
         -webkit-box-shadow: 1px 1px 5px #999;
-        box-shadow: 1px 1px 5px #999;
+        box-shadow: 0px 0px 10px #ffffff;
     }
 
     .top-barra {
         width: 100%;
         float: none;
         height: 45px;
-        background-color: rgb(26, 11, 46);
+        background-color: #542E71;
     }
 
     .min {
@@ -63,6 +85,8 @@
     }
 
     a#menu {
+        left: 15px;
+        padding-top: 7px;
         color: white;
     }
 
@@ -70,22 +94,17 @@
         color: white;
     }
 
-    a#close {
-        text-decoration: none;
-        color: white;
-    }
-
-    a#close:hover {
-        color: white;
-    }
-
     .icon:hover{
-        background-color: rgb(30, 30, 82);
+        background-color: white;
     }
 
     .conteudo {
         transition: 0.5s;
-
+        display: none;
+    }
+    .conteudo a{
+        font-size: 25px;
+        cursor: pointer;
     }
 
     .icon {
@@ -100,9 +119,17 @@
         border-radius: 10px;
         text-decoration: none;
     }
+
+    div#todosEventos{
+        display: none;
+    }
     
     div .icon > #menu:hover {
         text-decoration: none;
+    }
+    .centro{
+        text-align: center;
+        font-weight: bolder;
     }
 
     .backperfil{
@@ -110,11 +137,11 @@
         height: 200px;
         width: 100%;
         visibility: inherit;
-        background-color: #020538;
+        background-color: #6A66A3;
     }
   
     .nome {
-        padding: 15px;
+        padding-top: 15px;
         text-align: center;
         color: #fff;
     }

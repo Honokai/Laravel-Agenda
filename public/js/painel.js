@@ -4,8 +4,9 @@ $(document).ready(function(){
     document.getElementById("menu").style.visibility = "visible";
     document.getElementById("menu").style.backgroundColor = "white";
     */
-    $("#trocarfoto").on("click", function(){
-        document.getElementById("fotoupload").style.display = "block";
+    $("#alterarFoto").on("click", function(){
+        mostrarOcultarMenu();
+        document.getElementById("conteudo").style.display = "block";
         document.getElementById("para").style.display = "block";
     });
 
@@ -13,22 +14,17 @@ $(document).ready(function(){
         document.getElementById("par").style.display = "block";
         document.getElementById("relatorio").style.display = "block";
     });
-    
+    /*
+    $("#abrirmenu").on("click", function(){
+        alert("botao clicado");
+        document.getElementById("opcao-lateral").style.visibility = "visible";
+        document.getElementById("opcao-lateral").style.width = "200px";
+    });
+    */
     $("#menu").on("click", function(){
-        document.getElementById("menu").style.visibility = "hidden";
-        document.getElementById("close").style.visibility = "visible";
-        document.getElementById("menulateral").style.width = "200px";
-        document.getElementById("menulateral").style.visibility = "visible";
-        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        mostrarOcultarMenu();
     });
-
-    $("#close").on("click", function(){
-        document.getElementById("close").style.visibility = "hidden";
-        document.getElementById("menu").style.visibility = "visible";
-        document.getElementById("menulateral").style.width = "0px";
-        document.getElementById("menulateral").style.visibility = "hidden";
-        document.body.style.backgroundColor = "rgba(255,255,255,1)";
-    });
+   
 /*
     $("#submitregistro").on("click", function(){
         var form = new FormData(document.getElementById("form"));
@@ -115,3 +111,21 @@ $(document).ready(function(){
 
     });
 })
+
+function mostrarOcultarMenu(){
+    var menu = document.getElementById("menulateral").style.visibility;
+    document.getElementById("menu").classList.toggle("change");
+    if(menu == "" || menu == "hidden"){
+        document.getElementById("menulateral").style.width = "200px";
+        document.getElementById("menulateral").style.visibility = "visible";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }else{
+        document.getElementById("menulateral").style.width = "0px";
+        document.getElementById("menulateral").style.visibility = "hidden";
+        document.body.style.backgroundColor = "rgba(255,255,255,1)";
+    }
+}
+
+function fecharFoto(){
+    document.getElementById('conteudo').style.display = "none";
+}

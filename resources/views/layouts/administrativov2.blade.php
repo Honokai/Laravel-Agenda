@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/teste.js"></script>
+    <script src="js/painel.js"></script>
     <script type="text/javascript" src="js/sweetalert.js"></script>
 
     <!-- Fonts -->
@@ -56,10 +56,13 @@
 <body>
 
     <div class="top-barra">
-        <div class="icon">
-            <a id="menu" href="#" style="position: absolute">Menu</a>
-            <a id="close" href="#" style="visibility:hidden; position: absolute">Fechar menu</a>
-        </div>
+      
+        <a id="menu" href="#" style="position: absolute">
+            <div class="barra1"></div>
+            <div class="barra2"></div>
+            <div class="barra3"></div>
+        </a>
+        
         <img src="https://logospng.org/download/ebay/logo-ebay-256.png" class="logo">
         <a href="#" class="direita">Bem vindo, {{Auth::user()->nome}}</a>
     </div>
@@ -67,42 +70,17 @@
         <div id="backperfil" class="backperfil">
             <img class="perfil" id="perfil" src="profile/1/1.png" alt="" srcset="">
         </div>
-        
         <p class="nome">Usuário: <br>{{Auth::user()->nome}}</p>
-        <a href="#">Alterar foto</a>
-        <a href="#"> Relatórios</a>
-        <a href="#">Usuários</a>
-        <a href="#">Páginas</a>
+        <a href="#" id="alterarFoto">Alterar foto</a>
+        <a href="#" id="Relatórios"> Relatórios</a>
+        <a href="#" id="Usuários">Usuários</a>
+        <a href="#" id="Páginas">Páginas</a>
     </div>
-    
-    <div class="content" style="margin-top:10px">
-        <div class="conteudo" id="conteudo">
-            <div class="card" id="fotoupload" style="margin-left: 20px; margin-right: 20px; ">
-                <div class="card-body" style="border: 3px solid black">
-                  <h5 class="card-title">Selecionar foto</h5>
-                  <hr>
-                  <div class="row" style="text-align:center;font-weight:bold">
-                    <div class="col-sm">
-                      <form id="upload" enctype="multipart/form-data" method="post">
-                        <input type="text" id="userid" name="id" style="display:none" value="{{Auth::id()}}">
-                        <input id="foto" type="file" name="arquivo">
-                        <p></p>
-                      </form>
-                      <button id="enviarfoto" class="btn btn-primary">Enviar</button>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 
-<!--
     <main class="main" style="width:100%">
         <p></p>
         @yield('conteudo')
     </main>
 
--->
 </body>
 </html>

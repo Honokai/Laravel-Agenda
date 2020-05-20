@@ -143,7 +143,6 @@
                 nome: info.event.title
               },
               success: function(data){
-                console.log(JSON.parse(data));
                 let resposta = JSON.parse(data);
                 document.getElementById("idevento").value = resposta.id;
                 document.getElementById("atividade").value = resposta.tipo_atividade;
