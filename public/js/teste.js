@@ -1,5 +1,9 @@
 $(document).ready(function(){
-    
+    /*
+    document.getElementById("menu").style.width = "250px";
+    document.getElementById("menu").style.visibility = "visible";
+    document.getElementById("menu").style.backgroundColor = "white";
+    */
     $("#trocarfoto").on("click", function(){
         document.getElementById("fotoupload").style.display = "block";
         document.getElementById("para").style.display = "block";
@@ -10,6 +14,48 @@ $(document).ready(function(){
         document.getElementById("relatorio").style.display = "block";
     });
     
+    $("#menu").on("click", function(){
+        document.getElementById("menu").style.visibility = "hidden";
+        document.getElementById("close").style.visibility = "visible";
+        document.getElementById("menulateral").style.width = "200px";
+        document.getElementById("menulateral").style.visibility = "visible";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    });
+
+    $("#close").on("click", function(){
+        document.getElementById("close").style.visibility = "hidden";
+        document.getElementById("menu").style.visibility = "visible";
+        document.getElementById("menulateral").style.width = "0px";
+        document.getElementById("menulateral").style.visibility = "hidden";
+        document.body.style.backgroundColor = "rgba(255,255,255,1)";
+    });
+/*
+    $("#submitregistro").on("click", function(){
+        var form = new FormData(document.getElementById("form"));
+        let token = document.getElementsByName("_token")[0].defaultValue;
+        let nome = document.getElementById("name").val;
+        let senha =  document.getElementById("password").val;
+        let tipo = document.getElementById("tipo").val;
+        let email = document.getElementById("email").val;
+        $.ajax({
+           url: "register",
+           type: "POST",
+           data: {
+               "name": nome,
+               "email": email,
+               "_token": token,
+               "password": senha,
+               "tipo": tipo
+           },
+           success: function(data){
+                console.log(data);
+           },
+           error: function(data){
+                console.log(data);
+           }
+        });
+    });
+*/
     $("#enviarrelatorio").on("click", function(element){
         let login = $('#userid').val();
         let relatorio = $('#tiporelatorio').val();

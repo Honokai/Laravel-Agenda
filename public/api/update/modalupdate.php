@@ -19,7 +19,6 @@ $recomendacoes = $_POST['recomendacoes'];
 $qrec = $_POST['qrec'];
 $atuacao = $_POST['atuacao'];
 $potencial = $_POST['potencial'];
-$eventodata = $_POST['inicioevento'] . " " . $_POST['horarioinicio'];
 $observacoes = $_POST['observacoes'];
 
 
@@ -39,8 +38,8 @@ SET
 `q_rec` = '{$qrec}',
 `atuacao` = '{$atuacao}',
 `pot_negocio` = '{$potencial}',
-`data_ag` = '{$eventodata}',
-`observacao` = '{$observacoes}'
+`observacao` = '{$observacoes}',
+`alteracao` = CURRENT_TIMESTAMP()
 WHERE `id` = {$id};
 ";
 
@@ -61,7 +60,6 @@ if($result->execute()){
   `q_rec`,
   `atuacao`,
   `pot_negocio`,
-  `data_ag`,
   `observacao`)
   VALUES
   (
@@ -78,7 +76,6 @@ if($result->execute()){
   '{$qrec}',
   '{$atuacao}',
   '{$potencial}',
-  '{$eventodata}',
   '{$observacoes}');
   ";
 

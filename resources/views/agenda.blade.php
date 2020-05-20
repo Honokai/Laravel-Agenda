@@ -188,166 +188,170 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">     
-                    <div class="row">
-                        <div class="col-sm">                                   
-                            <div class="input-group mb-3" style="float:left">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Atividade</span>
+                <form action=""> 
+                    <div class="modal-body">    
+                        <div class="row">
+                            <div class="col-sm">                                   
+                                <div class="input-group mb-3" style="float:left">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Atividade</span>
+                                    </div>
+                                    <select type="text" id='novoatividade' class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
+                                        <option value=""></option>
+                                        <option value="PV">PV</option>
+                                        <option value="SV">SV</option>
+                                        <option value="VR">VR</option>
+                                        <option value="LIG">LIG</option>
+                                    </select>
                                 </div>
-                                <select type="text" id='novoatividade' class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
-                                    <option value=""></option>
-                                    <option value="PV">PV</option>
-                                    <option value="SV">SV</option>
-                                    <option value="VR">VR</option>
-                                    <option value="LIG">LIG</option>
-                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <div class="input-group mb-3" style="float:left">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Status</span>
+                                    </div>
+                                    <select type="text" id="novostatus" class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
+                                        <option value=""></option>
+                                        <option value="Aberto">Aberto</option>
+                                        <option value="ANF">ANF</option>
+                                        <option value="FLW">FLW</option>
+                                        <option value="AB">AB</option>
+                                        <option value="TED">TED</option>
+                                        <option value="D">D</option>
+                                        <option value="X">X</option>
+                                        <option value="OK">OK</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <div class="input-group mb-3" style="float:left">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Status</span>
-                                </div>
-                                <select type="text" id="novostatus" class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
-                                    <option value=""></option>
-                                    <option value="Aberto">Aberto</option>
-                                    <option value="ANF">ANF</option>
-                                    <option value="FLW">FLW</option>
-                                    <option value="AB">AB</option>
-                                    <option value="TED">TED</option>
-                                    <option value="D">D</option>
-                                    <option value="X">X</option>
-                                    <option value="OK">OK</option>
-                                </select>
+                        
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nome</span>
                             </div>
+                            <input type="text" id="novonome" class="form-control" aria-label="cliente" aria-describedby="basic-addon1">
                         </div>
-                    </div>
-                    
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Nome</span>
-                        </div>
-                        <input type="text" id="novonome" class="form-control" aria-label="cliente" aria-describedby="basic-addon1">
-                    </div>
 
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Celular</span>
-                        </div>
-                        <input type="text" id="novocelular" class="form-control celular">
-                    </div>
-                    
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Endereço</span>
-                        </div>
-                        <input type="text" id="novoendereco" class="form-control endereco">
-                    </div>
-                    
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Cidade</span>
-                        </div>
-                        <input type="text" id="novocidade" class="form-control cidade">
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="input-group mb-3" style="float:left;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Data</span>
-                                </div>
-                                <input type="date" id="novodata" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Celular</span>
                             </div>
+                            <input type="text" id="novocelular" class="form-control celular" required=''>
                         </div>
-
-                        <div class="col-sm">
-                            <div class="input-group mb-3" style="float:left;">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Horário</span>
-                                </div>
-                                <input type="text" id="novohora" class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
+                        
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Endereço</span>
                             </div>
+                            <input type="text" id="novoendereco" class="form-control endereco">
                         </div>
-                    </div>
-
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Recomendante</span>
+                        
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Cidade</span>
+                            </div>
+                            <input type="text" id="novocidade" class="form-control cidade">
                         </div>
-                        <input type="text" id="novorecomendante" class="form-control ">
-                    </div>
-                    
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Recomendações</span>
-                        </div>
-                        <input type="text" id="novorecomendacoes" class="form-control ">
-                    </div>
-                    
-                    <div class="row">
-
-                        <div class="col-sm">
-                            <div class="input-group mb-3" style="float:left">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Qtde recs</span>
+                        
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="input-group mb-3" style="float:left;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Data</span>
+                                    </div>
+                                    <input type="date" name="data" id="novadata" class="form-control" value="" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
-                                <input type="number" id="novoqtderecs" class="form-control ">
+                            </div>
+
+                            <div class="col-sm">
+                                <div class="input-group mb-3" style="float:left;">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">Horário</span>
+                                    </div>
+                                    <input type="text" id="novahora" class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm">
-                            <div class="input-group mb-3" style="float:left">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Atuação</span>
-                                </div>
-                                <select id="novoatuacao" class="custom-select form-control">
-                                    <option value=""></option>
-                                    <option value="HUNTER">Hunter</option>
-                                    <option value="FARMER">Farmer</option>
-                                </select> 
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Recomendante</span>
                             </div>
+                            <input type="text" id="novorecomendante" class="form-control ">
+                        </div>
+                        
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Recomendações</span>
+                            </div>
+                            <input type="text" id="novorecomendacoes" class="form-control ">
+                        </div>
+                        
+                        <div class="row">
+
+                            <div class="col-sm">
+                                <div class="input-group mb-3" style="float:left">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Qtde recs</span>
+                                    </div>
+                                    <input type="number" id="novoqtderecs" class="form-control ">
+                                </div>
+                            </div>
+
+                            <div class="col-sm">
+                                <div class="input-group mb-3" style="float:left">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Atuação</span>
+                                    </div>
+                                    <select id="novoatuacao" class="custom-select form-control">
+                                        <option value=""></option>
+                                        <option value="HUNTER">Hunter</option>
+                                        <option value="FARMER">Farmer</option>
+                                    </select> 
+                                </div>
+                            </div>
+
                         </div>
 
-                    </div>
-
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Potencial do negócio</span>
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Potencial do negócio</span>
+                            </div>
+                            <input type="text" id="novopotencial" class="form-control potencial">
                         </div>
-                        <input type="text" id="novopotencial" class="form-control potencial">
-                    </div>
 
-                    <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
+                        <!-- Campos ocultos, necessários para o correto posicionamento do evento-->
+                        <!--  antiga
+                        <div class="input-group mb-3" style="float:left;display:none">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Data</span>
+                            </div>
+                            <input type="date" id='novadatainicio' class="form-control" value="" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3" style="float:left;display:none">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Horário</span>
+                            </div>
+                            <input type="text" id='novohorarioinicio' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        -->
+
+                        <!-- Termina aqui-->
+
+                        <div class="input-group mb-3" style="float:left">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Observações</span>
+                            </div>
+                            <textarea class="form-control" style="resize: none;" id="novoobservacoes" aria-label="With textarea"></textarea>
+                        </div>
                     
-                    <div class="input-group mb-3" style="float:left;display:none">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Data</span>
-                        </div>
-                        <input type="date" id='novadatainicio' class="form-control" value="" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
-
-                    <div class="input-group mb-3" style="float:left;display:none">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Horário</span>
-                        </div>
-                        <input type="text" id='novohorarioinicio' class="form-control hora" aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="modal-footer">
+                        <button type="button" id="criar" class="btn btn-primary">Criar Evento</button>
                     </div>
-
-                    <!-- Termina aqui-->
-
-                    <div class="input-group mb-3" style="float:left">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Observações</span>
-                        </div>
-                        <textarea class="form-control" style="resize: none;" id="novoobservacoes" aria-label="With textarea"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="criar" class="btn btn-primary">Criar Evento</button>
-                </div>
-
+                </form>
             </div>
         </div>
     </div>

@@ -1,0 +1,150 @@
+    body, html {
+        height: 100%;
+    }
+
+    .parallax {
+        /* The image used */
+        background-image: url("http://2.bp.blogspot.com/-csCgQ1tXaHg/TkYWPtpSVvI/AAAAAAAAC-k/Czn0K-6DXOo/s1600/cool+hd+wallpapers+1.jpg");
+        
+        /* Full height */
+        height: 25%;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+      
+    .barralateral {
+        position: fixed;
+        visibility: hidden;
+        padding: 0;
+        width: 0px;
+        background-color: #292c5c;
+        position: fixed;
+        height: 100%;
+        transition: 0.5s;
+        overflow-x: hidden;
+        z-index: 1;
+    }
+    
+    .barralateral a {
+        visibility: inherit;
+        background-color: #020538;
+        margin-top: 15px;
+        margin-left: 20px;
+        margin-right: 20px;
+        text-align: center;
+        display: block;
+        border-radius: 25px;
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+    }
+    
+    .barralateral a:hover{
+        background-color: #494b70;
+        border: solid 1px #CCC;
+        -moz-box-shadow: 1px 1px 5px #999;
+        -webkit-box-shadow: 1px 1px 5px #999;
+        box-shadow: 1px 1px 5px #999;
+    }
+
+    .top-barra {
+        width: 100%;
+        float: none;
+        height: 45px;
+        background-color: rgb(26, 11, 46);
+    }
+
+    .min {
+        height: 90%;
+    }
+
+    a#menu {
+        color: white;
+    }
+
+    a#menu:hover {
+        color: white;
+    }
+
+    a#close {
+        text-decoration: none;
+        color: white;
+    }
+
+    a#close:hover {
+        color: white;
+    }
+
+    .icon:hover{
+        background-color: rgb(30, 30, 82);
+    }
+
+    .conteudo {
+        transition: 0.5s;
+
+    }
+
+    .icon {
+        margin-left: 10px;
+        margin-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: white;
+        font-size: 20px;
+        width: fit-content;
+        float: left;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    
+    div .icon > #menu:hover {
+        text-decoration: none;
+    }
+
+    .backperfil{
+        display: block;
+        height: 200px;
+        width: 100%;
+        visibility: inherit;
+        background-color: #020538;
+    }
+  
+    .nome {
+        padding: 15px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .perfil{
+        padding: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        visibility: inherit;
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+    }
+
+    img.logo {
+        margin-top: 4px;
+        margin-right: 10px;
+        float: right;
+        height: 40px;
+        width: 40px;
+    }       
+
+    a.direita {
+        text-decoration: none;
+        margin-right: 100px;
+        padding-top: 10px;
+        float: right;
+        color: white;
+    }
+
+
+
+    

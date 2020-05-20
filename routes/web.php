@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
+route::get('/p', function(){
+    return view('painelv2');
+});
+
 Route::get('/planilha/{file}', 'PlanilhaController@download');
 
 /* 
@@ -29,7 +33,11 @@ Route::get('/agenda', 'AdminController@agenda')->name('agenda')->middleware('ver
 Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
 
 Route::get('/', function(){
-    return view('auth/login');
+    if(!Auth::check()){
+        return view('auth/login');
+    }else{
+        return view('agenda');
+    }
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

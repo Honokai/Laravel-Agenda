@@ -24,7 +24,6 @@ require_once('../../config/BancoDados.php');
     $qrec = $_POST['qrec'];
     $atuacao = $_POST['atuacao'];
     $potencial = $_POST['potencial'];
-    $inicio = $_POST['inicioevento']. " " . $_POST['horarioinicio'];
     $observacoes = $_POST['observacoes']; 
     
     //$fim = $_POST['datatermino']. " " . $_POST['horariotermino'];
@@ -43,7 +42,6 @@ require_once('../../config/BancoDados.php');
         `q_rec`,
         `atuacao`,
         `pot_negocio`,
-        `data_ag`,
         `observacao`) VALUES (". 
         $usuario. ",'". 
         $atividade . "','".
@@ -58,7 +56,6 @@ require_once('../../config/BancoDados.php');
         $qrec ."','".
         $atuacao ."','".
         $potencial ."','".
-        $inicio . "','".
         $observacoes.
         "')";
 
@@ -79,7 +76,6 @@ require_once('../../config/BancoDados.php');
             `q_rec`,
             `atuacao`,
             `pot_negocio`,
-            `data_ag`,
             `observacao`) VALUES (". 
             $usuario. ",'". 
             $atividade . "','".
@@ -94,7 +90,6 @@ require_once('../../config/BancoDados.php');
             $qrec ."','".
             $atuacao ."','".
             $potencial ."','".
-            $inicio . "','".
             $observacoes.
             "')";
             $resultado = $conexao->prepare($query);

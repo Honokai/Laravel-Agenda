@@ -47,7 +47,6 @@ $(document).ready(function(){
         let iniciovento = $("#datainicio").val();
         let horarioinicio = $("#horarioinicio").val();
         let observacoes = $("#observacoes").val();
-        console.log(iniciovento+" "+horarioinicio);
         $.ajax({
             url: 'api/update/modalupdate.php',
             type: 'POST',
@@ -67,8 +66,6 @@ $(document).ready(function(){
                 "qrec" : qtderec,
                 "atuacao" : atuacao,
                 "potencial" : potencial,
-                "inicioevento" : iniciovento,
-                "horarioinicio" : horarioinicio,
                 "observacoes" : observacoes
             },
             success: function(data,response){
@@ -76,12 +73,12 @@ $(document).ready(function(){
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: data,
+                    title: JSON.parse(data),
                     showConfirmButton: false,
                     timer: 1500
                 });
                 $("#modal").modal('toggle');
-                //setTimeout(location.reload.bind(location), 1500);
+                setTimeout(location.reload.bind(location), 1500);
             },
             error: function(data){
                 console.log(JSON.parse(data.responseText));
@@ -93,6 +90,7 @@ $(document).ready(function(){
       $("#novohora").focusout(function(){
         document.getElementById('novohorarioinicio').value = $("#novohora").val();
       });
+      
       $('#criar').on("click", function(){
           let login = $('#login').val();
           let atividade = $("#novoatividade").val();
@@ -101,15 +99,13 @@ $(document).ready(function(){
           let celular = $('#novocelular').val();
           let endereco = $('#novoendereco').val();
           let cidade = $('#novocidade').val();
-          let data = $('#novodata').val();
-          let hora = $('#novohora').val();
+          let data = $('#novadata').val();
+          let hora = $('#novahora').val();
           let recomendante = $('#novorecomendante').val();
           let recomendacoes = $("#novorecomendacoes").val();
           let qtderec = $("#novoqtderecs").val();
           let atuacao = $("#novoatuacao").val();
           let potencial = $("#novopotencial").val();
-          let iniciovento = $("#novadatainicio").val();
-          let horarioinicio = $("#novohorarioinicio").val();
           let observacoes = $("#novoobservacoes").val();
           $.ajax({
             url:"api/post/cadastrar.php",
@@ -129,12 +125,9 @@ $(document).ready(function(){
                 "qrec" : qtderec,
                 "atuacao" : atuacao,
                 "potencial" : potencial,
-                "inicioevento" : iniciovento,
-                "horarioinicio" : horarioinicio,
                 "observacoes" : observacoes
             },
             success: function(data){
-                console.log(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

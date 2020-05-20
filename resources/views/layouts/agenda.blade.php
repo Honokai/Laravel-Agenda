@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style/main.css"/>
     <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css"/>
-    
+    <link rel="stylesheet" type="text/css" href="css/app.css"/>
     <script type="text/javascript" src="mask/jquery.mask.js"></script>  
     <script type="text/javascript" src="js/teste.js"></script> 
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.min.js"></script>
@@ -103,7 +103,7 @@
             }
           },
           dateClick: function(dateClickInfo ){
-            document.getElementById("novadatainicio").value = dateClickInfo.dateStr;
+            document.getElementById("novadata").value = dateClickInfo.dateStr;
             $("#criarevento").modal('toggle');
           },
           eventDrop: function(info){
@@ -154,8 +154,6 @@
                 document.getElementById("cidade").value = resposta.cidade;
                 document.getElementById("data").value =  resposta.data.substring(0,10);
                 document.getElementById("hora").value = resposta.data.substring(11,19);
-                document.getElementById("datainicio").value = resposta.data_ag.substring(0,10);
-                document.getElementById("horarioinicio").value = resposta.data_ag.substring(11,19);
                 document.getElementById("recomendante").value = resposta.recomendante;
                 document.getElementById("recomendacoes").value = resposta.recomendações;
                 document.getElementById("qtderecs").value = resposta.q_rec;

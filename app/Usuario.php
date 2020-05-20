@@ -16,7 +16,7 @@ class Usuario extends Model
 
     public static function eventosProximos(int $id){
         $hoje = today()->format('Y-m-d');
-        $eventos = DB::table('agenda')->select('nome','data_ag')->where('usuario_id','=',$id)->where(DB::raw('date(data_ag)'),$hoje)->get();
+        $eventos = DB::table('agenda')->select('nome','data')->where('usuario_id','=',$id)->where(DB::raw('date(data)'),$hoje)->get();
         return $eventos;
     }
 }

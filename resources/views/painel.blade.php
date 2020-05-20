@@ -5,7 +5,7 @@
 <div id="tudo" style="text-align:center;margin-left:4%;width:100%">
   <div class="row">
     <div id="cont" class="col-sm-2">
-      <div class="card dark" style="width: 90%; min-width:150px">
+      <div class="card" style="width: 90%; min-width:150px">
         <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
@@ -123,11 +123,10 @@
       <div class="card" style="width: 90%">
         <div class="card-header">{{ __('Criar novo acesso') }}</div>       
           <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" id="form" action="{{ route('register') }}">
                 @csrf
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
-
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
 
@@ -180,14 +179,14 @@
 
                   <div class="col-md-6">
                       <select class="custom-select" id="tipo">
-                        <option value="comum">Comum</option>
-                        <option value="admnistrador">Administrador</option>
+                        <option value="0">Comum</option>
+                        <option value="1">Administrador</option>
                       </select>
                   </div>
                 </div>     
                 <div class="form-group row mb-0">
                   <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" id="submitregistro" class="btn btn-primary">
                       {{ __('Registrar') }}
                     </button>
                   </div>
