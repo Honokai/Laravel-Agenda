@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\VerificarEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -41,5 +42,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function getAuthPassword()
     {
         return $this->senha;
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerificarEmail);
     }
 }

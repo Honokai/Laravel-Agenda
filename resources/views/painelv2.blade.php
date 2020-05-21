@@ -4,7 +4,7 @@
 <div class="content" style="margin-top:10px">
     <div class="conteudo" id="conteudo">
         <div class="card" id="fotoupload" style="margin-left: 20px; margin-right: 20px;">
-            <div class="card-body" >
+            <div class="card-body">
             <h5 class="card-title">Selecionar foto <a onclick="fecharFoto()" style="float: right">&times;</a></h5> 
             <hr>
             <div class="row" style="text-align:center;font-weight:bold">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="todosEventos" class="card"  style="margin-left: 20px; margin-right: 20px; margin-top: 10px">
+    <div id="todosEventos" class="card" style="margin-left: 20px; margin-right: 20px; margin-top: 10px">
         <div class="card-body">
           <h5 class="card-title centro">Eventos para hoje de todos usuários</h5>
           <hr>
@@ -55,6 +55,7 @@
           </div>
         </div>
     </div>
+    
 </div>
 
 

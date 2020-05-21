@@ -6,7 +6,7 @@
 @if ($level === 'error')
 # @lang('Whoops!')
 @else
-# @lang('Olá!')
+# @lang('Agenda lhe dá as boas vindas')
 @endif
 @endif
 

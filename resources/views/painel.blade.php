@@ -9,7 +9,7 @@
         <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
-            <button id="trocarfoto" class="btn btn-primary">Trocar foto</button>
+            <button id="alterarFoto" class="btn btn-primary">Trocar foto</button>
             <p></p>
             <button id="cardrelatorio" class="btn btn-primary" >Relatorio</button>
         </div>

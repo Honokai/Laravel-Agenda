@@ -16,6 +16,7 @@ $query = "SELECT u.nome as advisor, h.* FROM usuarios u JOIN historico h on u.id
 $resultado = $conexao->prepare($query);
 $resultado->execute();
 $caminho = "../file/";
+
 criarCabecalho();
 
 

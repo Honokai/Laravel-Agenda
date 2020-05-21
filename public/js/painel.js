@@ -5,13 +5,14 @@ $(document).ready(function(){
     document.getElementById("menu").style.backgroundColor = "white";
     */
     $("#alterarFoto").on("click", function(){
-        mostrarOcultarMenu();
-        document.getElementById("conteudo").style.display = "block";
-        document.getElementById("para").style.display = "block";
+        //mostrarOcultarMenu();
+        document.getElementById("fotoupload").style.display = "block";
+        //document.getElementById('todosEventos').style.display = "block";
+        //document.getElementById("para").style.display = "block";
     });
 
     $("#cardrelatorio").on("click", function(){
-        document.getElementById("par").style.display = "block";
+        //document.getElementById("par").style.display = "block";
         document.getElementById("relatorio").style.display = "block";
     });
     /*
@@ -128,4 +129,5 @@ function mostrarOcultarMenu(){
 
 function fecharFoto(){
     document.getElementById('conteudo').style.display = "none";
+    
 }

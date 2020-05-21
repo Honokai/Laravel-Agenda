@@ -12,7 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/teste.js"></script>
+    <script src="js/painel.js"></script>
     <script type="text/javascript" src="js/sweetalert.js"></script>
 
     <!-- Fonts -->
@@ -21,8 +21,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="css/painel.css" rel="stylesheet">
+    <link href="style/bootstrap.min.css" rel="stylesheet">
     <style>
        @media only screen and (max-width: 629px) {
 
