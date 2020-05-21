@@ -2105,6 +2105,16 @@ pre code {
     -webkit-overflow-scrolling: touch;
   }
 
+  div.container > a.navbar-brand{
+    display: none !important;
+  }
+
+  nav div.container button.navbar-toggler {
+    position: fixed;
+    top: 7px;
+    right: 20px;
+  }
+
   .table-responsive-md > .table-bordered {
     border: 0;
   }
