@@ -15,8 +15,8 @@ return [
 
     'reset' => 'Sua senha foi redefinida!',
     'sent' => 'Nós enviamos um e-mail de redefinição de senha!',
-    'throttled' => 'Por favor, espere antes de tentar novamente..',
-    'token' => 'Este token é inválido',
+    'throttled' => 'Por favor, espere antes de tentar novamente.',
+    'token' => 'Este token não é mais válido',
     'user' => "Não conseguimos encontrar um usuário com este endereço de e-mail.",
 
 ];
