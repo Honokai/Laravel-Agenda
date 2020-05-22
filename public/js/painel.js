@@ -15,6 +15,7 @@ $(document).ready(function(){
     $("#alterarFoto").on("click", function(){
         //mostrarOcultarMenu();
         document.getElementById("content").style.display = "block";
+        document.getElementById("fotoupload").style.display = "block";
         ocultarMenu();
         //document.getElementById('todosEventos').style.display = "block";
         //document.getElementById("para").style.display = "block";
@@ -23,12 +24,17 @@ $(document).ready(function(){
     
 
     $("#fecharFoto").on("click", function(){
-        document.getElementById("content").style.display = "none";
+        document.getElementById("fotoupload").style.display = "none";
+    });
+
+    $("#fecharRelatorio").on("click", function(){
+        document.getElementById("relatorio").style.display = "none";
     });
 
     $("#cardrelatorio").on("click", function(){
-        //document.getElementById("par").style.display = "block";
+        document.getElementById("content").style.display = "block";
         document.getElementById("relatorio").style.display = "block";
+        ocultarMenu();
     });
     /*
     $("#abrirmenu").on("click", function(){

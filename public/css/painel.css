@@ -12,7 +12,11 @@ section#opcao-lateral{
     color: #fff !important;
 }
 
-#content  {
+#fotoupload{
+    display: none;
+}
+
+#relatorio  {
     display: none;
 }
 
@@ -24,6 +28,7 @@ a.menu-toggler  {
 /* menu lateral teste*/
 
 .nome {
+    font-size: 20px;
     padding-top: 10px;
     color: white;
     text-align: center;
@@ -53,7 +58,7 @@ div.col-sm-4.padding-no{
     box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
 }
 .link{
-    font-size:16px;
+    font-size:20px;
     font-weight:300;
     text-align:center;
     position:relative;

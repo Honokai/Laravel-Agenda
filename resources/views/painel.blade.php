@@ -19,7 +19,7 @@
             <div class="text" id="alterarFoto"> Trocar foto</div>
           </div>
           <div class="link">
-            <div class="text">Relatorios</div>
+            <div class="text" id="cardrelatorio">Relatorios</div>
           </div>
           <div class="link">
             <div class="text">Controle de usuários</div>
@@ -39,6 +39,33 @@
                   <p></p>
                 </form>
                 <button id="enviarfoto" class="btn btn-primary">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" id="relatorio">
+          <div class="card-body bg-dark card-dark">
+            <h5 class="card-title">Gerar Relatórios <close id="fecharRelatorio"> &times; </close></h5>
+            <hr>
+            <div class="row" s>
+              <div class="col-sm">
+                <div class="input-group mb-3" style="float:left">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Tipo de relatório</span>
+                  </div>
+                  <select class="custom-select" id="tiporelatorio">
+                    <option value=""></option>
+                    <option value="todos">Todos</option>
+                    <option value="usuário">Usuário atual</option>
+                  </select> 
+                </div>
+                <div class="input-group mb-3" style="float:left">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="">Nome da planilha</span>
+                  </div>
+                  <input type="text" id="nomeplanilha" class="form-control">
+                </div>
+                <button id="enviarrelatorio" class="btn btn-primary">Enviar</button>
               </div>
             </div>
           </div>
