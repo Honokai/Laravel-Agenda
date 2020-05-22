@@ -4,11 +4,22 @@ $(document).ready(function(){
     document.getElementById("menu").style.visibility = "visible";
     document.getElementById("menu").style.backgroundColor = "white";
     */
+   $('body').onresize = (function(){
+        if(screen.width > 600){
+            document.getElementById("content-menu").style.display = "block";
+        }
+   });
     $("#alterarFoto").on("click", function(){
         //mostrarOcultarMenu();
-        document.getElementById("fotoupload").style.display = "block";
+        document.getElementById("content").style.display = "block";
         //document.getElementById('todosEventos').style.display = "block";
         //document.getElementById("para").style.display = "block";
+    });
+
+    
+
+    $("#fecharFoto").on("click", function(){
+        document.getElementById("content").style.display = "none";
     });
 
     $("#cardrelatorio").on("click", function(){
@@ -25,7 +36,7 @@ $(document).ready(function(){
     $("#menu").on("click", function(){
         mostrarOcultarMenu();
     });
-   
+    
 /*
     $("#submitregistro").on("click", function(){
         var form = new FormData(document.getElementById("form"));
@@ -111,8 +122,27 @@ $(document).ready(function(){
         });
 
     });
+
+  
+
+    $("#menu-change").on("click", function(){
+        menuTeste();
+    });
+
 })
 
+function menuTeste(){
+    var menu = document.getElementById("container-menu").style.display;
+    if(menu == "" || menu == "visible"){
+        document.getElementById("container-menu").style.display = "block";
+        document.getElementById("content").style.display = "none";
+       
+    }else{
+        document.getElementById("container-menu").style.display = "none";
+        document.getElementById("content").style.display = "block";
+    }
+}
+/*
 function mostrarOcultarMenu(){
     var menu = document.getElementById("menulateral").style.visibility;
     document.getElementById("menu").classList.toggle("change");
@@ -126,8 +156,7 @@ function mostrarOcultarMenu(){
         document.body.style.backgroundColor = "rgba(255,255,255,1)";
     }
 }
-
+*/
 function fecharFoto(){
-    document.getElementById('conteudo').style.display = "none";
-    
+    document.getElementById('fotoupload').style.display = "none";
 }

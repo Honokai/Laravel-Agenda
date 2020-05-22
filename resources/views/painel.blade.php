@@ -2,6 +2,87 @@
 {{-- refatorar esta view   --}}
 
 @section('conteudo')
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 padding-no">
+        <div class="container-menu" id="container-menu">
+          <div class="perfilF">
+            <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
+          </div>
+          <div class="nome">
+            Usuário: <br>
+            <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
+          </div>
+          <div class="link">
+            <div class="text" id="alterarFoto"> Trocar foto</div>
+          </div>
+          <div class="link">
+            <div class="text">Relatorios</div>
+          </div>
+          <div class="link">
+            <div class="text">Controle de usuários</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8" id="content" style="text-align: center">
+        <div class="card" id="fotoupload" style="overflow: hidden">
+          <div class="card-body bg-dark card-dark">
+            <h5 class="card-title">Selecionar foto <close id="fecharFoto"> &times; </close></h5>
+            <hr>
+            <div class="row" style="text-align:center;font-weight:bold">
+              <div class="col-sm">
+                <form id="upload" enctype="multipart/form-data" method="post">
+                  <input type="text" id="userid" name="id" style="display:none" value="{{Auth::id()}}">
+                  <input id="foto" type="file" name="arquivo">
+                  <p></p>
+                </form>
+                <button id="enviarfoto" class="btn btn-primary">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="row">
+      <div id="cont" class="col col-3">
+        <div class="card" style="min-width:150px; text-align: center">
+          <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
+            <button id="alterarFoto" class="btn btn-primary">Trocar foto</button>
+            <p></p>
+            <button id="cardrelatorio" class="btn btn-primary" >Relatorio</button>
+          </div>
+        </div>
+      </div>
+      <div id="cont1" class="col col-9">
+        <div class="card" id="fotoupload" style="overflow: hidden">
+          <div class="card-body">
+            <h5 class="card-title">Selecionar foto</h5>
+            <hr>
+            <div class="row" style="text-align:center;font-weight:bold">
+              <div class="col-sm">
+                <form id="upload" enctype="multipart/form-data" method="post">
+                  <input type="text" id="userid" name="id" style="display:none" value="{{Auth::id()}}">
+                  <input id="foto" type="file" name="arquivo">
+                  <p></p>
+                </form>
+                <button id="enviarfoto" class="btn btn-primary">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
 <div id="tudo" style="text-align:center;margin-left:4%;width:100%">
   <div class="row">
     <div id="cont" class="col-sm-2">
@@ -198,5 +279,5 @@
   </div>
 </div>
 <p></p>
-
+-->
 @endsection

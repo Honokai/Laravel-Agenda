@@ -23,99 +23,72 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="css/painel.css" rel="stylesheet">
     <link href="style/bootstrap.min.css" rel="stylesheet">
-    <style>
-       @media only screen and (max-width: 629px) {
-
-            #cont {
-                width: 100%;
-                margin-left: 5%;
-            }
-
-            #cont1 {
-                width: 100%;
-             
-            }
-
-            #cont2 {
-                width: 100%;
-                
-            }
-
-            #cont3 {
-                width: 100%;
-                
-            }
-            
-            #cont4 {
-                width: 100%;
-
-            }
-        }
-    </style>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <img style="width:50px;height:40px; border-radius:5px" src="./img/logo.png" >
-            <div class="container">
-                
-                <a class="navbar-brand" href="{{ url('/agenda') }}">
-                    Administração
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <img class="logo" src="./img/logo.png" >
+        <div class="container">
+            
+            <a class="navbar-brand" href="{{ url('/agenda') }}">
+                Administração
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav mr-auto">
 
-                    </ul>
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                <!-- Authentication Links -->
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
+                    </li>
+                    @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
-                            </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->nome }} <span class="caret"></span>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->nome }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item menu-toggler" id="menu-change">
+                                Menu
+                            </a>
+                            <a class="dropdown-item" href="agenda">
+                                {{ __('Agenda') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Sair') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="agenda">
-                                    {{ __('Agenda') }}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Sair') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                    
-                    </ul>
-                </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+                
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="main" style="width:100%">
-            <p></p>
-            @yield('conteudo')
-        </main>
-    </div>
+    @yield('conteudo')
+
+   
+
 </body>
 </html>
