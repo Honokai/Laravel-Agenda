@@ -24,7 +24,7 @@
     <link href="css/painel.css" rel="stylesheet">
     <link href="style/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body onresize="menu_ajuste()">
     
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
         <img class="logo" src="./img/logo.png" >
@@ -88,7 +88,15 @@
 
     @yield('conteudo')
 
-   
+   <script>
+        function menu_ajuste(){
+            if(window.innerWidth > 600){
+                document.getElementById("container-menu").style.display = "block";
+            }else{
+                document.getElementById("container-menu").style.display = "";
+            }
+        }
+   </script>
 
 </body>
 </html>

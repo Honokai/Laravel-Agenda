@@ -4,7 +4,10 @@ $(document).ready(function(){
     document.getElementById("menu").style.visibility = "visible";
     document.getElementById("menu").style.backgroundColor = "white";
     */
-   $('body').onresize = (function(){
+
+   
+
+   $(document).onresize = (function(){
         if(screen.width > 600){
             document.getElementById("content-menu").style.display = "block";
         }
@@ -12,6 +15,7 @@ $(document).ready(function(){
     $("#alterarFoto").on("click", function(){
         //mostrarOcultarMenu();
         document.getElementById("content").style.display = "block";
+        ocultarMenu();
         //document.getElementById('todosEventos').style.display = "block";
         //document.getElementById("para").style.display = "block";
     });
@@ -133,7 +137,7 @@ $(document).ready(function(){
 
 function menuTeste(){
     var menu = document.getElementById("container-menu").style.display;
-    if(menu == "" || menu == "visible"){
+    if(menu == "" || menu == "none"){
         document.getElementById("container-menu").style.display = "block";
         document.getElementById("content").style.display = "none";
        
@@ -157,6 +161,14 @@ function mostrarOcultarMenu(){
     }
 }
 */
+
+
+function ocultarMenu(){
+    if(window.innerWidth <= 600){
+        document.getElementById("container-menu").style.display = "none";
+    }
+}
+
 function fecharFoto(){
     document.getElementById('fotoupload').style.display = "none";
 }
