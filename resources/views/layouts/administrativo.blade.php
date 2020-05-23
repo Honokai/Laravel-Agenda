@@ -96,6 +96,11 @@
                 document.getElementById("container-menu").style.display = "";
             }
         }
+
+        function apagarPlanilha(){
+            $('#relat').remove();
+        }
+
    </script>
 
 </body>

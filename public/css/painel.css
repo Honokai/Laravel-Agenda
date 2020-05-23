@@ -43,7 +43,7 @@ a.menu-toggler  {
     max-width: 200px;
 }
 
-div.col-sm-4.padding-no{
+div.col-sm-3.padding-no{
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
@@ -63,6 +63,7 @@ div.col-sm-4.padding-no{
     text-align:center;
     position:relative;
     height:40px;
+    color: white;
     line-height:40px;
     margin-top:10px;
     overflow:hidden;
@@ -70,35 +71,47 @@ div.col-sm-4.padding-no{
     margin-left:5%;
     cursor:pointer;
  }
- .link:after{
-    content: '';
-    position:absolute;
-    width:80%;
-    border-bottom:1px solid rgba(255, 255, 255, 0.5);
-    bottom:50%;
-    left:-100%;
-    transition-delay: all 0.5s;
-    transition: all 0.5s;
- }
- .link:hover:after,
- .link.hover:after{
-    left:100%;
- }
- .link .text{
-    text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
-    transition:all 0.75s;
-    transform:translateY(100%) translateZ(0);
-    transition-delay:all 0.25s;
- }
- .link:hover .text,
- .link.hover .text{
-    color: white;
-    text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
-    transform:translateY(0%) translateZ(0) scale(1.1);
-    font-weight:600;
+
+ .link:hover{
+    background-color: gray;
  }
 
- @media (max-width: 600px)  {
+
+ @media (min-width: 700px){
+
+    .link:hover{
+        background-color: transparent;
+    }
+
+    .link:after{
+        content: '';
+        position:absolute;
+        width:80%;
+        border-bottom:1px solid rgba(255, 255, 255, 0.5);
+        bottom:50%;
+        left:-100%;
+        transition-delay: all 0.5s;
+        transition: all 0.5s;
+    }
+    .link:hover:after,
+    .link.hover:after{
+        left:100%;
+    }
+    .link .text{
+        text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+        transition:all 0.75s;
+        transform:translateY(100%) translateZ(0);
+        transition-delay:all 0.25s;
+    }
+    .link:hover .text,
+    .link.hover .text{
+        color: white;
+        text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
+        transform:translateY(0%) translateZ(0) scale(1.1);
+        font-weight:600;
+    }
+}
+ @media (max-width: 700px)  {
      .container-menu    {
         display: none;
      }

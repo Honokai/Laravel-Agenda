@@ -12,6 +12,8 @@ $(document).ready(function(){
             document.getElementById("content-menu").style.display = "block";
         }
    });
+
+   
     $("#alterarFoto").on("click", function(){
         //mostrarOcultarMenu();
         document.getElementById("content").style.display = "block";
@@ -74,7 +76,7 @@ $(document).ready(function(){
         });
     });
 */
-    $("#enviarrelatorio").on("click", function(element){
+    $("#enviarrelatorio").on("click", function(){
         let login = $('#userid').val();
         let relatorio = $('#tiporelatorio').val();
         let titulo = $('#nomeplanilha').val();
@@ -86,9 +88,9 @@ $(document).ready(function(){
                     "titulo":titulo
             },
             success: function(data){
-                //console.log(data);
+                console.log(data);
                 let resposta = JSON.parse(data);
-                $('#enviarrelatorio').after("<a class='btn btn-success' target='blank' "+"href='/planilha/"+resposta.planilha+"'>"+ resposta.planilha +"</a>");
+                $('#enviarrelatorio').after("<a class='btn btn-success' id='relat' onclick='apagarPlanilha()' target='blank' "+"href='/planilha/"+resposta.planilha+"'>"+ resposta.planilha +"</a>");
             },
             error: function(data) {
                 console.log("Erro");
@@ -96,7 +98,7 @@ $(document).ready(function(){
         });
     });
 
-
+    
     $("#enviarfoto").on("click", function(){
         var form = new FormData(document.getElementById("upload")); //necessário us
 

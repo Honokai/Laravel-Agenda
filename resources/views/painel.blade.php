@@ -6,7 +6,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-4 padding-no">
+      <div class="col-sm-3 padding-no">
         <div class="container-menu" id="container-menu">
           <div class="perfilF">
             <img id="imagemperfil" class="card-img-top" src="{{file_exists("profile/".Auth::id()."/".Auth::id().".png")==true ? "profile/".Auth::id()."/".Auth::id().".png" : "profile/padrao.png"}}" alt="Card image cap">
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-8" id="content" style="text-align: center">
+      <div class="col-sm-9" id="content" style="text-align: center">
         <div class="card" id="fotoupload" style="overflow: hidden">
           <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Selecionar foto <close id="fecharFoto"> &times; </close></h5>
@@ -47,8 +47,8 @@
           <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Gerar Relatórios <close id="fecharRelatorio"> &times; </close></h5>
             <hr>
-            <div class="row" s>
-              <div class="col-sm">
+            <div class="row">
+              <div class="col-sm" id="divid">
                 <div class="input-group mb-3" style="float:left">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="">Tipo de relatório</span>
