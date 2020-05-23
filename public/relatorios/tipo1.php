@@ -13,7 +13,7 @@ $banco = new BancoDados;
 $conexao = $banco->conexao();
 $char_set = $conexao->prepare("set names utf8");
 $char_set->execute();
-$query = "SELECT u.nome as advisor, h.* FROM usuarios u JOIN historico h on u.id = h.usuario_id";
+$query = "SELECT u.nome as advisor, h.* FROM usuarios u JOIN historico h on u.id = h.usuario_id order by h.celular";
 $resultado = $conexao->prepare($query);
 $resultado->execute();
 $caminho = "../file/";

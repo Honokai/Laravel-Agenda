@@ -13,7 +13,7 @@ $(document).ready(function(){
         }
    });
 
-   
+
     $("#alterarFoto").on("click", function(){
         //mostrarOcultarMenu();
         document.getElementById("content").style.display = "block";
@@ -110,6 +110,7 @@ $(document).ready(function(){
             contentType: false,
             data: form,
             success:function(data){
+                console.log(data);
                 //ao mandar nova foto atualiza o perfil sem que tenha que recarregar a página
                 $("#imagemperfil").attr("src","data:image/png;base64,"+data+"");
                 Swal.fire({
