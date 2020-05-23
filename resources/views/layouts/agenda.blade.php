@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/app.css"/>
     <script type="text/javascript" src="mask/jquery.mask.js"></script>  
-    <script type="text/javascript" src="js/teste.js"></script> 
+    <script type="text/javascript" src="js/painel.js"></script> 
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.min.js"></script>
   <!--  TESTE -->
     <link rel="stylesheet" type="text/css" href="style/jquery.dataTables.min.css"/>

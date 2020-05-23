@@ -107,7 +107,9 @@ $caminho = "../file/";
 
     $planilha = criarCabecalho();
     $i=4;
-    foreach($resultado->fetchAll() as $key){
+    $result = $resultado->fetchAll() ;
+    foreach($result as $key){
+        var_dump($result);
         $planilha->getActiveSheet()->setCellValue('a'.$i,$key['celular']);
         $planilha->getActiveSheet()->setCellValue('b'.$i,$key['advisor']);
         switch ($key['tipo_atividade']) {

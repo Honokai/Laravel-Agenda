@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\alterarSenha;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\VerificarEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,5 +48,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerificarEmail);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new alterarSenha($token));
+    }
+
+    protected function setUserPassword($user, $password)
+    {
+        $user->senha = Hash::make($password);
     }
 }
