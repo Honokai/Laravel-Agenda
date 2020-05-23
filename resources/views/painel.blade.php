@@ -63,10 +63,10 @@
                     <option value=""></option>
                     
                       @if(Auth::user()->acesso == 777){
-                        <option value="todos">Todos</option>
+                        <option value="1">Todos</option>
                       }
                       @endif
-                    <option value="usuário">Usuário atual</option>
+                    <option value="0">Usuário atual</option>
                   </select> 
                 </div>
                 <div class="input-group mb-3" style="float:left">
