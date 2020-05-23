@@ -24,9 +24,12 @@
           <div class="link">
             <div class="text" id="cardrelatorio">Relatorios</div>
           </div>
-          <div class="link">
-            <div class="text">Controle de usuário **</div>
-          </div>
+          @if (Auth::user()->acesso == 777)
+            <div class="link">
+              <div class="text">Controle de usuário **</div>
+            </div>
+          
+          @endif
         </div>
       </div>
       <div class="col-sm-9" id="content" style="text-align: center">
@@ -58,7 +61,11 @@
                   </div>
                   <select class="custom-select" id="tiporelatorio">
                     <option value=""></option>
-                    <option value="todos">Todos</option>
+                    
+                      @if(Auth::user()->acesso == 777){
+                        <option value="todos">Todos</option>
+                      }
+                      @endif
                     <option value="usuário">Usuário atual</option>
                   </select> 
                 </div>

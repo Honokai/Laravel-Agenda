@@ -109,7 +109,7 @@ $caminho = "../file/";
     $i=4;
     $result = $resultado->fetchAll() ;
     foreach($result as $key){
-        var_dump($result);
+        //var_dump($result);
         $planilha->getActiveSheet()->setCellValue('a'.$i,$key['celular']);
         $planilha->getActiveSheet()->setCellValue('b'.$i,$key['advisor']);
         switch ($key['tipo_atividade']) {
