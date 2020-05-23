@@ -16,13 +16,16 @@
             <h5 class="card-title" style="font-weight:bold">{{Auth::user()->nome}}</h5>
           </div>
           <div class="link">
+            <div class="text">Trocar senha **</div>
+          </div>
+          <div class="link">
             <div class="text" id="alterarFoto"> Trocar foto</div>
           </div>
           <div class="link">
             <div class="text" id="cardrelatorio">Relatorios</div>
           </div>
           <div class="link">
-            <div class="text">Controle de usuários</div>
+            <div class="text">Controle de usuário **</div>
           </div>
         </div>
       </div>
