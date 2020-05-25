@@ -130,7 +130,7 @@ class ApiController extends Controller
 
             if($evento->save()){
 
-                return response()->json(["Evento atualizado.", $data],200);
+                return response()->json(["Evento atualizado."],200);
 
             }else{
 
