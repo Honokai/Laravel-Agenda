@@ -8,7 +8,7 @@ class Eventos extends Model
 {
     protected $table = 'eventos';
 
-    public $timestamps = false;
+    public $timestamps = false;   //UPDATED_AT AND CREATED_AT CANCELA
 
     protected $fillable = ['usuario_id', 'tipo_atividade',
     'status_atividade','nome','celular','endereco',

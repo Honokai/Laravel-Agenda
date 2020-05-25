@@ -110,12 +110,16 @@
           eventDrop: function(info){
             timezone: 'America/Noronha';
             $.ajax({
-              url: "api/update/evento.php",
-              method: 'POST',
+              url: "api/eventos/atualizarDrop/",
+              method: 'PUT',
               data: {
+                id: info.event.id,
                 login: {{Auth::id()}},
                 data: info.event.start.toString(),
                 nome: info.event.title
+              },
+              success: function(data){
+                console.log(data);
               }
             });
           },
@@ -144,7 +148,6 @@
               },
               success: function(data){
                 try {
-                  
                   let resposta = JSON.parse(data);
                   resposta = resposta[0];
                   document.getElementById("idevento").value = resposta.id;
@@ -162,7 +165,7 @@
                   document.getElementById("atuacao").value = resposta.atuacao;
                   document.getElementById("potencial").value = resposta.pot_negocio;
                   document.getElementById("observacoes").value = resposta.observacao;
-
+                  
                 } catch (error) {
                   console.log(error);
                 }

@@ -44,12 +44,12 @@ $(document).ready(function(){
         let qtderec = $("#qtderecs").val();
         let atuacao = $("#atuacao").val();
         let potencial = $("#potencial").val();
-        let iniciovento = $("#datainicio").val();
-        let horarioinicio = $("#horarioinicio").val();
+        //let iniciovento = $("#datainicio").val();
+        //let horarioinicio = $("#horarioinicio").val();
         let observacoes = $("#observacoes").val();
         $.ajax({
-            url: 'api/update/modalupdate.php',
-            type: 'POST',
+            url: 'api/eventos/atualizar/',
+            type: 'PUT',
             data:{
                 "id":id, //id do evento
                 "login":login, //id do usuário
@@ -73,7 +73,7 @@ $(document).ready(function(){
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: JSON.parse(data),
+                    title: data,
                     showConfirmButton: false,
                     timer: 1500
                 });
