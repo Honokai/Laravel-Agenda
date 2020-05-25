@@ -16,12 +16,16 @@ class ApiController extends Controller
      */
     public function carregarCalendario($id) {
         if(Eventos::where('usuario_id', $id)->exists()) {
-            $eventos = Eventos::where('usuario_id', $id)->get(['nome as title','data as start','observacao as description'])->toJson(JSON_PRETTY_PRINT);
+            $eventos = Eventos::where('usuario_id', $id)->get(['id as id','nome as title','data as start','observacao as description'])->toJson(JSON_PRETTY_PRINT);
+            
             return response($eventos, 200);
+
         }else{
+
             return response()->json([
                 "Nenhum evento"
               ], 201);
+
         }
     }
 
@@ -30,8 +34,19 @@ class ApiController extends Controller
      * @param Request $request
      * @method GET
      */
-    public function carregarEvento(Request $request) {
+    public function carregarEvento(Request $request, $id) {
+        $data = date("Y:m:d H:i:s",strtotime(substr($request->data,0,24)));
+        if(Eventos::where('data','=',$data)->where('usuario_id','=',$id)->where('nome','=',$request->nome)->exists()) {
+            $evento = Eventos::where('id','=',$request->id)->where('data','=',$data)->where('usuario_id','=',$id)->where('nome','=',$request->nome)->get()->toJson(JSON_PRETTY_PRINT);
+            
+            return response($evento, 200);
 
+        }else{
+
+            return response()->json(['Ocorreu um erro ao carregar o evento',$request->id,
+            $data, $request->nome],201);
+
+        }
     }
 
     /**
@@ -41,11 +56,16 @@ class ApiController extends Controller
      */
     public function deletarEvento(Request $request, $id) {
         if(Eventos::where('id',$id)->where('usuario_id',$request->usuario)->exists()){
-            $evento = Eventos::find($request->id)->where('usuario_id',$request->usuario);
+            $evento = Eventos::where('id',$id)->where('usuario_id',$request->usuario);
+            
             if($evento->delete()){
-                return response()->json(['Evento apagado'],201);
+
+                return response()->json(['Evento excluído com sucesso.'],201);
+
             }else{
+
                 return response()->json(['Ocorreu um erro'],304);
+
             }
 
         }
@@ -74,7 +94,9 @@ class ApiController extends Controller
         $evento->observacao = $request->observacoes;
 
         if($evento->save()) {
+
             return response()->json(['Evento adicionado com sucesso.'],201);
+
         }
     }
 
@@ -83,7 +105,7 @@ class ApiController extends Controller
      * @param Request $request
      * @method PUT
      */
-    public function atualizar(Request $request) {
+    public function atualizarEvento(Request $request) {
 
     }
 

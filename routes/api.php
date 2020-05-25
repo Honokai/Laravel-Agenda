@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('eventos/{id}', 'ApiController@carregarCalendario');
-Route::get('eventos/calendario/{id}', 'ApiController@carregarEvento');
+Route::get('eventos/evento/{id}', 'ApiController@carregarEvento');
 Route::post('eventos','ApiController@cadastraEvento');
-Route::put('eventos/{id}', 'ApiController@atualizar');
+Route::put('eventos/atualizar/{id}', 'ApiController@atualizarEvento');
 Route::delete('eventos/{id}','ApiController@deletarEvento');
