@@ -93,7 +93,13 @@ $(document).ready(function(){
                 $('#enviarrelatorio').after("<a class='btn btn-success' id='relat' onclick='apagarPlanilha()' target='blank' "+"href='/planilha/"+resposta.planilha+"'>"+ resposta.planilha +"</a>");
             },
             error: function(data) {
-                console.log("Erro");
+                console.log(data);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'info',
+                    title: JSON.parse(data.responseText),
+                    showConfirmButton: true
+                });
             }
         });
     });

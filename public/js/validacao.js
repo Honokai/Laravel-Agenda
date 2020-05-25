@@ -108,7 +108,7 @@ $(document).ready(function(){
           let potencial = $("#novopotencial").val();
           let observacoes = $("#novoobservacoes").val();
           $.ajax({
-            url:"api/post/cadastrar.php",
+            url:"api/eventos",
             type:"POST",
             data: {
                 "login" : login,
@@ -131,7 +131,7 @@ $(document).ready(function(){
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: JSON.parse(data),
+                    title: data,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -153,19 +153,19 @@ $(document).ready(function(){
         let id = $('#idevento').val();
         let login = $('#login').val();
         $.ajax({
-            url:"api/delete/excluirevento.php",
-            type:"POST",
+            url:"api/eventos/"+id,
+            type:"DELETE",
             data: {
                 "_method":"DELETE",
-                "id":id,
                 "usuario":login,
             },
             success: function(data){
-                let resposta = JSON.parse(data);
+                console.log(data);
+                //let resposta = JSON.parse(data);
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: resposta,
+                    title: data,
                     showConfirmButton: false,
                     timer: 1500
                 });

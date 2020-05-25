@@ -67,10 +67,10 @@
             right: 'timeGridDay,timeGridWeek,dayGridMonth,listWeek'
           },
           eventSources: [{
-            url: "api/get/calendar.php",
-              extraParams: {
+            url: "api/eventos/"+{{Auth::id()}},
+              /*extraParams: {
                 login: {{Auth::id()}},
-              },  
+              },*/  
               textColor: 'white'
             }
           ],
@@ -143,26 +143,31 @@
                 nome: info.event.title
               },
               success: function(data){
-                let resposta = JSON.parse(data);
-                document.getElementById("idevento").value = resposta.id;
-                document.getElementById("atividade").value = resposta.tipo_atividade;
-                document.getElementById("status").value = resposta.status_atividade;
-                document.getElementById("nome").value = resposta.nome;
-                document.getElementById("celular").value = resposta.celular;
-                document.getElementById("endereco").value = resposta.endereco;
-                document.getElementById("cidade").value = resposta.cidade;
-                document.getElementById("data").value =  resposta.data.substring(0,10);
-                document.getElementById("hora").value = resposta.data.substring(11,19);
-                document.getElementById("recomendante").value = resposta.recomendante;
-                document.getElementById("recomendacoes").value = resposta.recomendações;
-                document.getElementById("qtderecs").value = resposta.q_rec;
-                document.getElementById("atuacao").value = resposta.atuacao;
-                document.getElementById("potencial").value = resposta.pot_negocio;
-                document.getElementById("observacoes").value = resposta.observacao;
-
+                try {
+                  let resposta = JSON.parse(data);
+                  resposta = resposta[0];
+                  document.getElementById("idevento").value = resposta.id;
+                  document.getElementById("atividade").value = resposta.tipo_atividade;
+                  document.getElementById("status").value = resposta.status_atividade;
+                  document.getElementById("nome").value = resposta.nome;
+                  document.getElementById("celular").value = resposta.celular;
+                  document.getElementById("endereco").value = resposta.endereco;
+                  document.getElementById("cidade").value = resposta.cidade;
+                  document.getElementById("data").value =  resposta.data.substring(0,10);
+                  document.getElementById("hora").value = resposta.data.substring(11,19);
+                  document.getElementById("recomendante").value = resposta.recomendante;
+                  document.getElementById("recomendacoes").value = resposta.recomendações;
+                  document.getElementById("qtderecs").value = resposta.q_rec;
+                  document.getElementById("atuacao").value = resposta.atuacao;
+                  document.getElementById("potencial").value = resposta.pot_negocio;
+                  document.getElementById("observacoes").value = resposta.observacao;
+                } catch (error) {
+                  console.log(error);
+                }
+                
               },
               error: function(data){
-
+                console.log(data);
               }
             });
             $("#tudo").modal('toggle');

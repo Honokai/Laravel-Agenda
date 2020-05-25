@@ -28,7 +28,6 @@
             <div class="link">
               <div class="text">Controle de usuário **</div>
             </div>
-          
           @endif
         </div>
       </div>

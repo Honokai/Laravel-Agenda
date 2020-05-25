@@ -26,7 +26,8 @@ switch ($tipo ) {
         break;
     
     default:
-        echo "Houve um erro, reporte o erro ao administrador da plataforma. Código Rel.01";
+        http_response_code(301);
+        echo json_encode("Houve um erro, reporte o erro ao administrador da plataforma.<br><strong>Código de referência Rel.01 </strong>");
         break;
 }
 
@@ -35,10 +36,11 @@ $conexao = $banco->conexao();
 $char_set = $conexao->prepare("set names utf8");
 $char_set->execute();
 
-$resultado = $conexao->prepare($query);
-$resultado->execute();
-$caminho = "../file/";
+if(isset($query)){
 
+    $resultado = $conexao->prepare($query);
+    $resultado->execute();
+    $caminho = "../file/";
 
     $planilha = criarCabecalhoGeral();
     
@@ -93,5 +95,5 @@ $caminho = "../file/";
     echo json_encode(array(
         "planilha"=>"{$titulo}.xlsx"
     ));
-
+}
 ?>
