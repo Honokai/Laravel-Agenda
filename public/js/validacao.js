@@ -107,6 +107,7 @@ $(document).ready(function(){
           let atuacao = $("#novoatuacao").val();
           let potencial = $("#novopotencial").val();
           let observacoes = $("#novoobservacoes").val();
+          console.log(data+" "+ hora);
           $.ajax({
             url:"api/eventos",
             type:"POST",
@@ -118,8 +119,7 @@ $(document).ready(function(){
                 "celular" : celular,
                 "endereco" : endereco,
                 "cidade" : cidade ,
-                "data" : data,
-                "hora": hora,
+                "data" : data+" "+hora,
                 "recomendante" : recomendante,
                 "recomendacoes" : recomendacoes,
                 "qrec" : qtderec,

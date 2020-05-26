@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Eventos;
+use App\EventosHistorico;
+use App\Relatorio;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class ApiController extends Controller
 {
@@ -77,6 +85,7 @@ class ApiController extends Controller
      * @method POST
      */
     public function cadastraEvento(Request $request) {
+        $timestamps = true;
         $evento = new Eventos;
         $evento->usuario_id = $request->login;
         $evento->tipo_atividade = $request->atividade;
@@ -93,7 +102,26 @@ class ApiController extends Controller
         $evento->pot_negocio = $request->potencial;
         $evento->observacao = $request->observacoes;
 
+
         if($evento->save()) {
+
+            $evento = new EventosHistorico;
+            $evento->usuario_id = $request->login;
+            $evento->tipo_atividade = $request->atividade;
+            $evento->status_atividade = $request->status;
+            $evento->nome = $request->nome;
+            $evento->celular = $request->celular;
+            $evento->endereco = $request->endereco;
+            $evento->cidade = $request->cidade;
+            $evento->data = $request->data;
+            $evento->recomendante = $request->recomendante;
+            $evento->recomendações = $request->recomendacoes;
+            $evento->q_rec = $request->qrec;
+            $evento->atuacao = $request->atuacao;
+            $evento->pot_negocio = $request->potencial;
+            $evento->observacao = $request->observacoes;
+
+            $evento->save();
 
             return response()->json(['Evento adicionado com sucesso.'],201);
 
@@ -113,14 +141,13 @@ class ApiController extends Controller
 
         if(Eventos::where('id','=',$request->id)->where('usuario_id','=',$request->login)->exists()){
             $data = $request->data." ".$request->hora;
-
             $evento = Eventos::find($request->id);
             $evento->nome = is_null($request->nome) ? $evento->nome : $request->nome;
             $evento->tipo_atividade = is_null($request->atividade) ? $evento->tipo_atividade : $request->atividade;
             $evento->status_atividade = is_null($request->status) ? $evento->status_atividade : $request->status;
             $evento->endereco = is_null($request->endereco) ? $evento->endereco : $request->endereco;
             $evento->cidade = is_null($request->cidade) ? $evento->cidade : $request->cidade;
-            $evento->recomendante = is_null($request->recomendante) ? $evento->recomendante : $request->recomendante; 
+            $evento->recomendante = is_null($request->recomendante) ? $evento->recomendante : $request->recomendante;
             $evento->q_rec = is_null($request->qrec) ? $evento->q_rec : $request->qrec;
             $evento->criacao = $evento->criacao;
             $evento->atuacao = is_null($request->atuacao) ? $evento->atuacao : $request->atuacao;
@@ -129,6 +156,23 @@ class ApiController extends Controller
             $evento->observacao = is_null($request->observacoes) ? $evento->observacao : $request->observacoes;
 
             if($evento->save()){
+                $evento = new EventosHistorico;
+                $evento->usuario_id = $request->login;
+                $evento->tipo_atividade = $request->atividade;
+                $evento->status_atividade = $request->status;
+                $evento->nome = $request->nome;
+                $evento->celular = $request->celular;
+                $evento->endereco = $request->endereco;
+                $evento->cidade = $request->cidade;
+                $evento->data = $data;
+                $evento->recomendante = $request->recomendante;
+                $evento->recomendações = $request->recomendacoes;
+                $evento->q_rec = $request->qrec;
+                $evento->atuacao = $request->atuacao;
+                $evento->pot_negocio = $request->potencial;
+                $evento->observacao = $request->observacoes;
+
+                $evento->save();
 
                 return response()->json(["Evento atualizado."],200);
 
@@ -148,7 +192,7 @@ class ApiController extends Controller
     /**
      * 
      */
-    public function arrastaEsolta(Request $request) {
+    public function arrastaEsoltaEvento(Request $request) {
 
         $data = date("Y-m-d H:i:s",strtotime(substr($request->data,0,24)));
 
@@ -171,6 +215,92 @@ class ApiController extends Controller
         } else {
             return response()->json(["Erro ao buscar pelo evento.", $data],201);
         }
+
+    }
+
+    /**
+     * Cria o relatorio de acordo com o conteudo do request
+     * @param Request $request
+     * @return Spreadsheet
+     */
+    public function criarRelatorio(Request $request){
+
+        $relatorio = new Relatorio;
+        switch ($request->relatorio ) {
+            case 0:
+                
+                $itens = User::join('eventos_historicos','usuarios.id', '=', 'eventos_historicos.usuario_id')
+                        ->where('usuario_id',$request->id)->select('usuarios.nome as advisor','eventos_historicos.*')
+                        ->get()->sortBy('eventos_historicos.celular');
+                
+                break;
+            
+            case '1':
+                
+                $itens = User::select('usuarios.nome, eventos_historico.*')->join('eventos_historicos')
+                        ->select('usuarios.id as advisor','eventos_historicos.*')->orderBy('usuarios.nome','asc');
+
+            default:
+                
+                return response()->json(["Houve um erro, reporte o erro ao administrador da plataforma.<br><strong>Código de referência Rel.01 </strong>"],201);
+            
+                break;
+        }
+        $planilha = new Spreadsheet;
+        $planilha = Relatorio::criarCabecalhoGeral();
+        $comecoDeInsercao=4;
+        
+        foreach($itens as $key){
+            $planilha->getActiveSheet()->setCellValue('a'.$comecoDeInsercao,$key['celular']);
+            $planilha->getActiveSheet()->setCellValue('b'.$comecoDeInsercao,$key['advisor']);
+           
+            switch ($key['tipo_atividade']) {
+            
+                case 'PV':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopePrimeiraVisita($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    break;
+                
+                case 'SV':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeSegundaVisita($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    break;
+                
+                case 'VR':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeVisitaRelacionamento($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    break;
+                
+                case 'LIG':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeLigacao($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    break;
+    
+                default:
+                    break;
+            }
+
+            $planilha->getActiveSheet()->setCellValue('c'.$comecoDeInsercao,$key['criacao']);
+            $planilha->getActiveSheet()->setCellValue('d'.$comecoDeInsercao,$key['alteracao']);
+            $comecoDeInsercao++;
+        }
+
+        $planilha->getActiveSheet()->getStyle('A1:D'.$comecoDeInsercao)->getAlignment()->setHorizontal('center');
+
+        foreach(range('A','D') as $columnID) {
+            $planilha->getActiveSheet()->getColumnDimension($columnID)
+                ->setAutoSize(true);
+        }
+        
+
+        $escrever = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($planilha, "Xlsx");
+        //$escrever->save(Storage::disk('public'->put($request->titulo.".xlsx")));
+        
+        $escrever->save(storage_path('app/' . "{$request->titulo}.xlsx"));
+        //$escrever->save(Storage::disk('public'->put($request->titulo.".xlsx")));
+        
+
+        return response()->json(["item"=>"{$request->titulo}.xlsx"],200);
 
     }
 

@@ -22,5 +22,8 @@ Route::get('eventos/{id}', 'ApiController@carregarCalendario');
 Route::get('eventos/evento/{id}', 'ApiController@carregarEvento');
 Route::post('eventos','ApiController@cadastraEvento');
 Route::put('eventos/atualizar/', 'ApiController@atualizarEvento');
-Route::put('eventos/atualizarDrop/', 'ApiController@arrastaEsolta');
+Route::put('eventos/atualizarDrop/', 'ApiController@arrastaEsoltaEvento');
 Route::delete('eventos/{id}','ApiController@deletarEvento');
+
+Route::get('relatorio','ApiController@criarRelatorio');
+Route::post('relatorio','ApiController@criarRelatorio');    

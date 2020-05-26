@@ -81,16 +81,14 @@ $(document).ready(function(){
         let relatorio = $('#tiporelatorio').val();
         let titulo = $('#nomeplanilha').val();
         $.ajax({
-            url: "relatorios/tipo1.php",
+            url: "api/relatorio",
             type: "POST",
             data: { "id": login,
                     "relatorio":relatorio,
                     "titulo":titulo
             },
             success: function(data){
-                console.log(data);
-                let resposta = JSON.parse(data);
-                $('#enviarrelatorio').after("<a class='btn btn-success' id='relat' onclick='apagarPlanilha()' target='blank' "+"href='/planilha/"+resposta.planilha+"'>"+ resposta.planilha +"</a>");
+                $('#enviarrelatorio').after("<a class='btn btn-success' id='relat' onclick='apagarPlanilha()' target='blank' "+"href='/planilha/"+data.item+"'>"+ data.item +"</a>");
             },
             error: function(data) {
                 console.log(data);

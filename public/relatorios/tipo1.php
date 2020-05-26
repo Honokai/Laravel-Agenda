@@ -19,7 +19,7 @@ switch ($tipo ) {
             where h.usuario_id = {$id} order by h.celular";
         break;
     
-    case 'value':
+    case '1':
         $query = "SELECT u.nome as advisor, h.* FROM usuarios u 
             JOIN historico h on u.id = h.usuario_id 
             order by h.celular";
