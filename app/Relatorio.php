@@ -11,7 +11,7 @@ class Relatorio extends Model
 
     
     /**
-     * 
+     * Preenche os locais de acordo com o status da atividade
      * @param int $celula
      * @param String $statusAtividade
      * @param Spreadsheet $planilha
@@ -69,7 +69,7 @@ class Relatorio extends Model
 
 
     /**
-     * 
+     * Preenche os locais de acordo com o status da atividade
      * @param int $celula
      * @param String $statusAtividade
      * @param Spreadsheet $planilha
@@ -127,9 +127,9 @@ class Relatorio extends Model
 
 
     /**
-     * 
+     * Preenche os locais de acordo com o status da atividade
      * @param int $celula
-     * @param String $statusAtividade
+     * @param string $statusAtividade
      * @param Spreadsheet $planilha
      * @return Spreadsheet $planilha
      * @author Emerson 
@@ -159,6 +159,13 @@ class Relatorio extends Model
         }
     }
 
+    /**
+     * Preenche os locais de acordo com o status da atividade
+     * @param int $celula
+     * @param string $statusAtividade
+     * @param Spreadsheet $planilha
+     * @return Spreadsheet
+     */
     public function  scopeLigacao(int $celula,String $statusAtividade,Spreadsheet $planilha)
     {
         /* M4   T*/ 
@@ -186,7 +193,7 @@ class Relatorio extends Model
     /* ANF = 002060     ABERTO = 548235   FLW=FFC000    AB=548235   D=D9D9D9 TED=0070C0    X=A88B7B     OK=A88B7B  */ 
 
     /**
-     * Colorir subcabeçalho
+     * Colorir subcabeçalho do relatorio GERAL
      * @param Spreadsheet $planilha
      * @return Spreadsheet $planilha
      * @author Emerson 
@@ -224,7 +231,7 @@ class Relatorio extends Model
     }
 
 /**
-     * Criar o cabeçalho da planilha
+     * Criar o cabeçalho da planilha quando o relatorio solicitado é o geral
      * 
      * @author Emerson
      * @return Spreadsheet
