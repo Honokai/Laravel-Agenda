@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\This;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Relatorio extends Model
@@ -190,7 +191,7 @@ class Relatorio extends Model
      * @return Spreadsheet $planilha
      * @author Emerson 
      */
-    public function  scopecoloracaoSubCabecalho(Spreadsheet $planilha){
+    public function  scopeColoracaoSubCabecalho(Spreadsheet $planilha){
         
         $planilha->getActiveSheet()->getStyle('E3')->getFill()->setFillType("solid")->getStartColor()->setARGB('548235');
         $planilha->getActiveSheet()->getStyle('F3')->getFill()->setFillType("solid")->getStartColor()->setARGB('002060');
@@ -226,10 +227,12 @@ class Relatorio extends Model
      * Criar o cabeçalho da planilha
      * 
      * @author Emerson
+     * @return Spreadsheet
      */
     public static function criarCabecalhoGeral(){
+        $relatorio = new Relatorio;
         $planilha = new Spreadsheet();
-        //$planilha = coloracaoSubCabecalho($planilha);
+        $planilha = $relatorio->scopeColoracaoSubCabecalho($planilha);
 
 
         /*    alinhamento    */

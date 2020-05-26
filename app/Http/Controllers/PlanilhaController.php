@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Facade\FlareClient\Http\Response;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
