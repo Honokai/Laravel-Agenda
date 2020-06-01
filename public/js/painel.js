@@ -5,8 +5,6 @@ $(document).ready(function(){
     document.getElementById("menu").style.backgroundColor = "white";
     */
 
-   
-
    $(document).onresize = (function(){
         if(screen.width > 600){
             document.getElementById("content-menu").style.display = "block";
@@ -23,9 +21,7 @@ $(document).ready(function(){
         //document.getElementById("para").style.display = "block";
     });
 
-    
-
-    $("#fecharFoto").on("click", function(){
+    $("#fecharFoto").on("click", function(){    
         document.getElementById("fotoupload").style.display = "none";
     });
 
@@ -33,9 +29,19 @@ $(document).ready(function(){
         document.getElementById("relatorio").style.display = "none";
     });
 
+    $("#fecharControle").on("click", function(){
+        document.getElementById("controle").style.display = "none";
+    });
+
     $("#cardrelatorio").on("click", function(){
         document.getElementById("content").style.display = "block";
         document.getElementById("relatorio").style.display = "block";
+        ocultarMenu();
+    });
+
+    $("#controleUsuario").on("click", function(){
+        document.getElementById("content").style.display = "block";
+        document.getElementById("controle").style.display = "block";
         ocultarMenu();
     });
     /*

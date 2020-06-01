@@ -45,6 +45,8 @@ $(document).ready(function(){
         }
     });
     
+
+    fetch().
     
     $('#adicionar').on("click", function(){
         var teste;

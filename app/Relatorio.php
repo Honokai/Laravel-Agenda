@@ -9,7 +9,6 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 class Relatorio extends Model
 {
 
-    
     /**
      * Preenche os locais de acordo com o status da atividade
      * @param int $celula

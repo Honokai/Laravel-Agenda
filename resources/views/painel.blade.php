@@ -26,12 +26,14 @@
           </div>
           @if (Auth::user()->acesso == 777)
             <div class="link">
-              <div class="text">Controle de usuário **</div>
+              <div class="text" id="controleUsuario">Controle de usuário **</div>
             </div>
           @endif
         </div>
       </div>
+
       <div class="col-sm-9" id="content" style="text-align: center">
+        
         <div class="card" id="fotoupload" style="overflow: hidden">
           <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Selecionar foto <close id="fecharFoto"> &times; </close></h5>
@@ -48,6 +50,7 @@
             </div>
           </div>
         </div>
+        
         <div class="card" id="relatorio">
           <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Gerar Relatórios <close id="fecharRelatorio"> &times; </close></h5>
@@ -79,7 +82,41 @@
             </div>
           </div>
         </div>
-      </div>
+
+        <p></p>
+        <div class="card" id="controle">
+          <div class="card-body">
+            <h5 class="card-title">Usuários <close id="fecharControle"> &times; </close></h5>
+            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+            <p class="card-text">
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <p class="card-text">Nome</p>
+                  </div>
+                  <div class="col-6">
+                    Status
+                  </div>
+                </div>
+              @foreach ( $usuarios as $usuario)
+                <div class="row">
+                  <div class="col-6">
+                    <p class="card-text"><strong>{{$usuario->nome}}</strong></p>
+                  </div>
+                  <div class="col-6" style="text-align: center !important">
+                    <div style="color:white;background-color:#6ab263;border-radius:5px;width:60px; display:inline-block">Online</div>
+                  </div>
+                </div>
+              @endforeach
+            </p>
+          </div>
+        </div>
+
+
+
+      </div>  <!-- fim de div coluna -->
+
+
     </div>
   </div>
 

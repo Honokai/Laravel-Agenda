@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +45,7 @@
           timezone: 'America/Fortaleza',
           locale:'pt-br',
           height: 600,
-          overflow: true,
+          overflow: false,
           contentHeight: "auto",
           contentWidth: "auto",
           plugins: [ 'interaction','dayGrid', 'timeGrid', 'bootstrap', 'list'],
@@ -55,7 +55,7 @@
           eventLimit: true, // for all non-TimeGrid views
           views: {
             timeGrid: {
-              eventLimit: 2 // adjust to 6 only for timeGridWeek/timeGridDay
+              eventLimit: 2 // adjust to 2 only for timeGridWeek/timeGridDay
             },
             dayGrid: {
               eventLimit:2
@@ -76,32 +76,45 @@
           ],
           eventRender: function(info) {
 
+
             if(info.view.type == 'dayGridMonth' || info.view.type == 'listWeek'){
               var user = document.createElement('div');
               user.innerHTML = info.event.extendedProps.description;
               info.el.lastChild.lastChild.appendChild(user);
-              if(info.event.extendedProps.atividade == "PV"){
-                info.el.style.backgroundColor  = "#ff6347";
-                info.el.style.borderColor = "black";
-              }
-              if(info.event.extendedProps.atividade == "SV"){
-                info.el.style.backgroundColor  = "#ffa900";
-                info.el.style.borderColor = "blue";
-              }
-            }else{
-              if(info.event.extendedProps.atividade == "PV"){
-                info.el.style.backgroundColor  = "#ff6347";
-                info.el.style.borderColor = "black";
-              }
-              if(info.event.extendedProps.atividade == "SV"){
-                info.el.style.backgroundColor  = "#ffa900";
-                info.el.style.borderColor = "blue";
-              }
-              var user = document.createElement('div');
-              user.style.display = 'inline-block';
-              user.innerHTML = info.event.extendedProps.description;
-              info.el.appendChild(user);
+              
+              switch (info.event.extendedProps.atividade) {
+                case "PV":
+                  info.el.style.backgroundColor  = "#ff6347";
+                  info.el.style.borderColor = "#ff6347";
+                  break;
+                case "SV":
+                  info.el.style.backgroundColor  = "#ffa900";
+                  info.el.style.borderColor = "#ffa900";
+                  break
+                
+                case "VR":
+                  info.el.style.backgroundColor  = "#9dfc03";
+                  info.el.style.color = "#000";
+                  info.el.style.borderColor = "#9dfc03";
+                  break;
+
+                case "LIG":
+                  info.el.style.backgroundColor  = "red";
+                  info.el.style.borderColor = "red";
+                  break;
+
+                default:
+                  console.log("Erro na atividade");
+                  break;
+              } 
+
             }
+            else {
+                var user = document.createElement('div');
+                user.style.display = 'inline-block';
+                user.innerHTML = info.event.extendedProps.description;
+                info.el.appendChild(user);
+              }
           },
           dateClick: function(dateClickInfo ){
             document.getElementById("novadata").value = dateClickInfo.dateStr;
@@ -119,11 +132,11 @@
                 nome: info.event.title
               },
               success: function(data){
-                console.log(data);
+                console.log(data + info.event.id);
               }
             });
           },
-          eventResize: function(info){
+          eventResize: function(info){  /*  Verificar necessidade  */
             timezone: 'America/Noronha';
             $.ajax({
               url: "api/update/evento.php",
@@ -147,7 +160,7 @@
                 "nome": info.event.title
               },
               success: function(data){
-                try {
+
                   let resposta = JSON.parse(data);
                   resposta = resposta[0];
                   document.getElementById("idevento").value = resposta.id;
@@ -165,14 +178,37 @@
                   document.getElementById("atuacao").value = resposta.atuacao;
                   document.getElementById("potencial").value = resposta.pot_negocio;
                   document.getElementById("observacoes").value = resposta.observacao;
-                  
-                } catch (error) {
-                  console.log(error);
-                }
-                
               },
               error: function(data){
                 console.log(data);
+              },
+              complete: function(data){
+                resposta = JSON.parse(data.responseText);
+                resposta = resposta[0];
+              
+                $.ajax({
+                  url:"api/historico/observacao",
+                  type: 'GET',
+                  data: {
+                    "id": document.getElementById("login").value,
+                    "celular": resposta.celular
+                  },
+                  success: function(data) {
+                    let array = JSON.parse(data);
+                    let div = document.getElementById('obsAnteriores').innerHTML;
+                    document.getElementById('obsAnteriores').innerHTML = "<div class='collapse' id='collapseExample'></div>";
+                    $.each(array, function(index, value){
+                      document.getElementById('collapseExample').innerHTML += 
+                      "<div class='card card-body'>"+value.observacao+"<p class='card-text' style='text-align:right'><small class='text-muted'> Aleração feita em "+ value.criacao +"</small></p>"+"</div>"
+                    
+                    });
+                    console.log(JSON.parse(data));
+                  },
+                  error: function(data)  {
+                    console.log(data.responseText);
+                  }
+                });
+                
               }
             });
             $("#tudo").modal('toggle');

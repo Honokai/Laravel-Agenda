@@ -24,7 +24,7 @@ class ApiController extends Controller
      */
     public function carregarCalendario($id) {
         if(Eventos::where('usuario_id','=',$id)->exists()) {
-            $eventos = Eventos::where('usuario_id','=',$id)->get(['id as id','nome as title','data as start','observacao as description'])->toJson(JSON_PRETTY_PRINT);
+            $eventos = Eventos::where('usuario_id','=',$id)->get(['id as id','nome as title','data as start','observacao as description', 'tipo_atividade as atividade'])->toJson(JSON_PRETTY_PRINT);
             
             return response($eventos, 200);
 
@@ -305,4 +305,24 @@ class ApiController extends Controller
     }
 
 
+    /**
+     * 
+     */
+    public function histobs(Request $request){
+        
+        if(EventosHistorico::where('celular', '=', $request->celular)->where('usuario_id', '=', $request->id)->exists() ){
+            
+            $hist = new EventosHistorico;
+            $hist = $hist::where('celular', '=', $request->celular)->where('usuario_id', '=', $request->id)
+            ->select('observacao',DB::raw('DATE_FORMAT(criacao, "%d/%m/%Y %H:%i:%s") as criacao'))->orderBy('criacao','desc')->get()->toJson(JSON_PRETTY_PRINT);
+
+            return response($hist,200);
+
+        } else  {
+
+            return response()->json([$request],404);
+
+        }
+
+    }
 }

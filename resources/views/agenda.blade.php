@@ -168,9 +168,17 @@
                         </div>
                         <textarea class="form-control" style="resize: none;" id="observacoes" aria-label="With textarea"></textarea>
                     </div>
+                    <div style="text-align:right">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Observações Prévias
+                        </button>
+                    </div>
+                    <div id="obsAnteriores">
+                        
+                    </div>
 
                     <div class="modal-footer">
-                        <button type="button" id="enviar" class="btn btn-primary">Salvar</button>
+                        <button type="button" id="enviar" class="btn btn-success">Salvar</button>
                         <button type="button" id="excluirevento" class="btn btn-primary btn-danger" data-dismiss="modal">Excluir evento</button>
                     </div>
 
