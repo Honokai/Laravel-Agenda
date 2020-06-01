@@ -1,6 +1,6 @@
 # Agenda
 
-## Programa desenvolvido com a utilização do framework Laravel trabalhando juntamente ao FullCalendar.
+## Programa desenvolvido com Laravel, FullCalendar e PhpOffice
 
 ### Utilização
-Aplicação web desenvolvida para gerenciar e criar relatórios
+Aplicação web desenvolvida para gerenciar eventos e gerar relatórios com base nos dados cadastrados
