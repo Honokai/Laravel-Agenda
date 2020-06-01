@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-
+        <!-- Parte de controle de usuário -->
         <div class="card" id="controle" style="display: none">
           <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Usuários <close id="fecharControle"> &times; </close></h5>
