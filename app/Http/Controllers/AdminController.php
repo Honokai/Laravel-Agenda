@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\User;
 use Symfony\Contracts\EventDispatcher\Event;
 use Illuminate\Http\Request;
 use App\Usuario;
@@ -28,7 +30,7 @@ class AdminController extends Controller
     public function painel()
     {
         $id = Auth::id();
-        $usuarios = Usuario::online();
+        $usuarios = User::all();
         $eventos = Usuario::eventosProximos($id);
         return view('painel')->with('usuarios',$usuarios)->with('eventos',$eventos);
     }

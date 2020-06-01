@@ -83,28 +83,53 @@
           </div>
         </div>
 
-        <p></p>
-        <div class="card" id="controle">
-          <div class="card-body">
+        <div class="card" id="controle" style="display: none">
+          <div class="card-body bg-dark card-dark">
             <h5 class="card-title">Usuários <close id="fecharControle"> &times; </close></h5>
             <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
             <p class="card-text">
               <div class="container">
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-12" style="text-align: right">
+                    <button class="btn btn-primary btn-sm">NOVO USUÁRIO +</button>
+                  </div>
+                </div>
+                <div class="row" style="font-weight: bolder">
+                  <div class="col-4">
                     <p class="card-text">Nome</p>
                   </div>
-                  <div class="col-6">
+                  <div class="col-4">
                     Status
+                  </div>
+                  <div class="col-4">
+                    Ações
                   </div>
                 </div>
               @foreach ( $usuarios as $usuario)
-                <div class="row">
-                  <div class="col-6">
-                    <p class="card-text"><strong>{{$usuario->nome}}</strong></p>
+                <div class="row" style="padding-top: 2px; padding-bottom: 2px;">
+                  <div class="col-4">
+                    <p class="card-text">{{$usuario->nome}}</p>
                   </div>
-                  <div class="col-6" style="text-align: center !important">
-                    <div style="color:white;background-color:#6ab263;border-radius:5px;width:60px; display:inline-block">Online</div>
+                  @if($usuario->online == 1)
+                    <div class="col-4" style="text-align: center !important">
+                      <div style="color:white;background-color:#6ab263;border-radius:5px;width:60px; display:inline-block">Online</div>
+                    </div>
+                  @else 
+                    <div class="col-4" style="text-align: center !important">
+                      <div style="color:white;background-color:#b65959;border-radius:5px;width:60px; display:inline-block">Offline</div>
+                    </div>
+                  @endif
+                  <div class="col-4"  >
+                    <div class="dropdown" style="text-align:center">
+                      <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ações
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Excluir usuário</a>
+                        <a class="dropdown-item" href="#">Modificar usuário</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               @endforeach
