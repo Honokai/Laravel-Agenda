@@ -3,10 +3,12 @@
 namespace App;
 
 use App\Notifications\alterarSenha;
+use App\Notifications\AvisoEvento;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\VerificarEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -48,6 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerificarEmail);
+    }
+
+    public function AlertaEvento($evento){
+        $this->notify(new AvisoEvento);
     }
 
     public function sendPasswordResetNotification($token)
