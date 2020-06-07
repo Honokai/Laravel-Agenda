@@ -177,7 +177,8 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="" required>Senha</span>
                           </div>
-                          <input type="password" name="senha" class="form-control @error('senha') is-invalid @enderror">
+                          <input style="z-index: 0" type="password" name="senha" class="form-control @error('senha') is-invalid @enderror">
+                          <button class="fa fa-eye input-icon" type="button" onclick="if(this.previousElementSibling.type == 'password'){this.previousElementSibling.type = 'text'}else{this.previousElementSibling.type = 'password'}" style="z-index:1;position: absolute;right: 10px;color: rgb(0, 128, 255); top: calc(50% - 0.5em);"></button>
                           @error('senha')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
