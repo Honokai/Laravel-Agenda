@@ -42,7 +42,8 @@ class AvisoEvento extends Notification
     {
         return (new MailMessage)
                     ->subject('Evento '.$notifiable->evento)
-                    ->line('Você tem um evento marcado para amanhã')
+                    ->greeting('Olá, tudo bem '.$notifiable->nome." ?")
+                    ->line('Você tem um encontro com '.$notifiable->evento.' marcado para amanhã.')
                     ->action('Ir para agenda', url('/'))
                     ->line('Obrigado por utilizar nossa aplicação!');
     }
