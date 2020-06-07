@@ -2,7 +2,11 @@
 {{-- refatorar esta view   --}}
 
 @section('conteudo')
-
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }} <close style="float: right" onclick="this.parentElement.style.display = 'none'"> &times; </close>
+    </div>
+  @endif
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3 padding-no">
@@ -25,7 +29,7 @@
           </div>
           @if (Auth::user()->acesso == 777)
             <div class="link">
-              <div class="text" id="controleUsuario">Controle de usuário **</div>
+              <div class="text" id="controleUsuario">Controle de usuário</div>
             </div>
           @endif
         </div>
@@ -138,17 +142,12 @@
           </div>
           <p></p>
           <div class="card" id='formUsuario' style="display: none">
-            <div class="card-body">
-              <h4 class="card-title">Criar usuário</h4>
+            <div class="card-body bg-dark card-dark">
+              <h4 class="card-title">Criar usuário <close onclick="this.parentElement.parentElement.parentElement.style.display = 'none'"> &times; </close></h4>
               <div class="row">
                 <div class="col-12">
-                  @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                  @endif
                   <form action="{{ url('registro') }}" method="POST">
-                    {{ csrf_field() }}
+                    {{ csrf_field() }}  
                     <div class="row">
                       <div class="col-6">
                         <div class="input-group mb-3" style="float:left">
@@ -189,7 +188,7 @@
                       <div class="col-6">
                         <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Confirmação de senha</span>
+                            <span class="input-group-text" id="">Confirmação</span>
                           </div>
                           <input type="password" name="senha_confirmation" class="form-control" required>
                         </div>
