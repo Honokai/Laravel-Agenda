@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\VerificarEmail;
 use App\User;
 use Symfony\Contracts\EventDispatcher\Event;
 use Illuminate\Http\Request;
@@ -53,12 +54,14 @@ class AdminController extends Controller
 
         $this->validate($request, $rules);
 
-        User::create([
+        $usuario = User::create([
             'nome' => $request['nome'],
             'email' => $request['email'],
             'senha' => Hash::make($request['senha']),
             'acesso' => $request['acesso'],
         ]);        
+
+        $usuario->notify(new VerificarEmail);
 
         return back()->with("status", "Usuário criado.");
 }
