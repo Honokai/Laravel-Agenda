@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     
     public static function online(){
-        $usuarios = DB::table('usuarios')->select('nome')->where('online',1)->get();
+        $usuarios = DB::table('usuarios')->select('id,nome')->where('online',1)->get();
         return $usuarios;
     }
 

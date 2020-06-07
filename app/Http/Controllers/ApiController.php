@@ -228,22 +228,20 @@ class ApiController extends Controller
         $relatorio = new Relatorio;
         switch ($request->relatorio ) {
             case 0:
-                
                 $itens = User::join('eventos_historicos','usuarios.id', '=', 'eventos_historicos.usuario_id')
                         ->where('usuario_id',$request->id)->select('usuarios.nome as advisor','eventos_historicos.*')
-                        ->get()->sortBy('eventos_historicos.celular');
-                
+                        ->get()->sortBy('eventos_historicos.celular');  
                 break;
             
-            case '1':
+            case 771:
                 
-                $itens = User::select('usuarios.nome, eventos_historico.*')->join('eventos_historicos')
-                        ->select('usuarios.id as advisor','eventos_historicos.*')->orderBy('usuarios.nome','asc');
+                $itens = EventosHistorico::join('usuarios','eventos_historicos.usuario_id', '=', 'usuarios.id')
+                        ->select('usuarios.nome as advisor','eventos_historicos.*')->get()->sortBy('eventos_historicos.celular');
+                break;
 
             default:
-                
+
                 return response()->json(["Houve um erro, reporte o erro ao administrador da plataforma.<br><strong>Código de referência Rel.01 </strong>"],201);
-            
                 break;
         }
         $planilha = new Spreadsheet;
@@ -258,22 +256,22 @@ class ApiController extends Controller
             
                 case 'PV':
                     $atividade = $key['status_atividade'];
-                    $planilha = $relatorio->scopePrimeiraVisita($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    $planilha = $relatorio->scopePrimeiraVisita($comecoDeInsercao,$atividade,$planilha);
                     break;
                 
                 case 'SV':
                     $atividade = $key['status_atividade'];
-                    $planilha = $relatorio->scopeSegundaVisita($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    $planilha = $relatorio->scopeSegundaVisita($comecoDeInsercao,$atividade,$planilha);
                     break;
                 
                 case 'VR':
                     $atividade = $key['status_atividade'];
-                    $planilha = $relatorio->scopeVisitaRelacionamento($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    $planilha = $relatorio->scopeVisitaRelacionamento($comecoDeInsercao,$atividade,$planilha);
                     break;
                 
                 case 'LIG':
                     $atividade = $key['status_atividade'];
-                    $planilha = $relatorio->scopeLigacao($comecoDeInsercao,$key['status_atividade'],$planilha);
+                    $planilha = $relatorio->scopeLigacao($comecoDeInsercao,$atividade,$planilha);
                     break;
     
                 default:
@@ -285,7 +283,7 @@ class ApiController extends Controller
             $comecoDeInsercao++;
         }
 
-        $planilha->getActiveSheet()->getStyle('A1:D'.$comecoDeInsercao)->getAlignment()->setHorizontal('center');
+        $planilha->getActiveSheet()->getStyle('A1:D1'.$comecoDeInsercao)->getAlignment()->setHorizontal('center');
 
         foreach(range('A','D') as $columnID) {
             $planilha->getActiveSheet()->getColumnDimension($columnID)
@@ -306,7 +304,9 @@ class ApiController extends Controller
 
 
     /**
+     * Captura somente o campo observacao da tabela eventos_historicos
      * 
+     * utilizado no modal de evento
      */
     public function histobs(Request $request){
         
@@ -325,4 +325,15 @@ class ApiController extends Controller
         }
 
     }
+/*
+    public function excluirUsuario(Request $request){
+
+        if(User::){
+
+        }else{
+
+        }
+
+    }
+    */
 }

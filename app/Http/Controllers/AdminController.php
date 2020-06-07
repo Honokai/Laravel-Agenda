@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -35,17 +36,32 @@ class AdminController extends Controller
         return view('painel')->with('usuarios',$usuarios)->with('eventos',$eventos);
     }
 
-    public function painel1()
-    {
-        $id = Auth::id();
-        $usuarios = Usuario::online();
-        $eventos = Usuario::eventosProximos($id);
-        return view('painelv2')->with('usuarios',$usuarios)->with('eventos',$eventos);
-    }
-
     public function agenda(){
         $id = Auth::id();
         $eventos = Usuario::eventosProximos($id);
         return view('agenda')->with('eventos',$eventos);
     }
+
+    public function registro(Request $request)
+{
+        $rules = [
+            'nome' => ['required', 'string','min:8', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios'],
+            'senha' => ['required', 'string', 'min:8', 'confirmed'],
+            'acesso' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+
+        User::create([
+            'nome' => $request['nome'],
+            'email' => $request['email'],
+            'senha' => Hash::make($request['senha']),
+            'acesso' => $request['acesso'],
+        ]);        
+
+        return back()->with("status", "Usuário criado.");
+}
+
+
 }

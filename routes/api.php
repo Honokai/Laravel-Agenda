@@ -29,4 +29,6 @@ Route::put('eventos/atualizarDrop/', 'ApiController@arrastaEsoltaEvento');
 Route::delete('eventos/{id}','ApiController@deletarEvento');
 
 Route::get('relatorio','ApiController@criarRelatorio');
-Route::post('relatorio','ApiController@criarRelatorio');    
+Route::post('relatorio','ApiController@criarRelatorio');
+
+Route::delete('excluir','ApiController@excluirUsuario');

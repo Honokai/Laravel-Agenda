@@ -20,22 +20,5 @@ class EventosController extends Controller
     {
         //
     }
-/*
-    public function eventoAmanha(){
-        $data = new DateTime('tomorrow');
 
-        $evento = Eventos::select('eventos.nome as evento,eventos.data as data,usuarios.nome as nome, usuarios.email as email')->join('usuario','eventos.usuario_id','=','usuarios.id')
-        ->where('data', '=', $data->format('Y-m-d'));
-        
-        foreach($evento as $item){
-            $usuario = new User;
-            $usuario->nome = $item->nome;
-            $usuario->evento = $item->evento;
-            $usuario->data = $item->data;
-            $usuario->email = $item->email;
-            $usuario->AlertaEvento;
-        }
-        
-    }
-    */
 }
