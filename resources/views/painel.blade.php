@@ -178,7 +178,7 @@
                             <span class="input-group-text" id="" required>Senha</span>
                           </div>
                           <input style="z-index: 0" type="password" name="senha" class="form-control @error('senha') is-invalid @enderror">
-                          <button class="fa fa-eye input-icon" type="button" onclick="if(this.previousElementSibling.type == 'password'){this.previousElementSibling.type = 'text'}else{this.previousElementSibling.type = 'password'}" style="z-index:1;position: absolute;right: 10px;color: rgb(0, 128, 255); top: calc(50% - 0.5em);"></button>
+                          <button class="fa fa-eye input-icon bt-icon" type="button" onclick="if(this.previousElementSibling.type == 'password'){this.previousElementSibling.type = 'text'}else{this.previousElementSibling.type = 'password'}"></button>
                           @error('senha')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -191,10 +191,40 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="">Confirmação</span>
                           </div>
-                          <input type="password" name="senha_confirmation" class="form-control" required>
+                          <input type="password" name="senha_confirmation" class="form-control" style="z-index: 0" required>
+                          <button type="button" name="" class="fa fa-eye input-icon bt-icon"  onclick="if(this.previousElementSibling.type == 'password'){this.previousElementSibling.type = 'text'}else{this.previousElementSibling.type = 'password'}"></button>
                         </div>
                       </div>
                     </div>
+                    <div id="objetivos"> <h4>Objetivos</h4>
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="">Recomendações</span>
+                            </div>
+                            <input type="text" name="obj_rec" class="form-control" placeholder="Recomendações objetivo" required>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="">Ligações</span>
+                            </div>
+                            <input type="text" name="obj_lig" class="form-control" placeholder="Ligações objetivo" required>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="">Abertos</span>
+                            </div>
+                            <input type="text" name="obj_lig" class="form-control" placeholder="Abertos objetivo" required>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="">Nível de acesso</span>

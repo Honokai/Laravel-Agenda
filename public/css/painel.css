@@ -11,6 +11,17 @@ section#opcao-lateral{
 .card-dark {
     color: #fff !important;
 }
+/* Icone de olho para mostrar ou ocultar a senha*/
+.bt-icon {
+    z-index:1;
+    position: absolute;
+    right: 10px;
+    color: rgb(81, 180, 78);
+    top: calc(50% - 0.5em);
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+}
 
 #fotoupload{
     display: none;

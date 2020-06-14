@@ -12,13 +12,13 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
+            {{/*Criar campo nível na tabela e trabalhar com ele, criar campos de objetivos no usuário, não podem ser null*/}}
                 <div class="modal-body" >
                     <div class="row">
                         <div class="col-sm">                                   
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Atividade</span>
+                                    <span class="input-group-text" id="">Ativ.</span>
                                 </div>
                                 <select type="text" id='atividade' class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
                                     <option value=""></option>
@@ -44,6 +44,19 @@
                                     <option value="D">D</option>
                                     <option value="X">X</option>
                                     <option value="OK">OK</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="input-group mb-3" style="float:left">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Nível</span>
+                                </div>
+                                <select type="text" id="status" class="form-control custom-select" aria-label="Categoria" aria-describedby="basic-addon1">
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
                                 </select>
                             </div>
                         </div>
@@ -159,6 +172,7 @@
                             <div class="input-group mb-3" style="float:left">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Potencial do negócio</span>
+                                    <span class="input-group-text">R$</span>
                                 </div>
                                 <input type="text" id="potencial" class="form-control potencial">
                             </div>
@@ -370,6 +384,7 @@
                         <div class="input-group mb-3" style="float:left">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Potencial do negócio</span>
+                                <span class="input-group-text">R$</span>
                             </div>
                             <input type="text" id="novopotencial" class="form-control potencial">
                         </div>
