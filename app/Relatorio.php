@@ -66,6 +66,83 @@ class Relatorio extends Model
         }
     }
 
+    public function scopeBaseEspecifico($itens, Relatorio $relatorio, Spreadsheet $planilha)
+    {
+        $planilha = $relatorio->scopeCabecalhoEspecifico($planilha);
+        return $planilha;
+    }
+
+    public function scopeCabecalhoEspecifico(Spreadsheet $planilha){
+        $inicio = 7;
+    
+        $planilha->getActiveSheet()->getStyle('a'.$inicio)->getFill()->setFillType("solid")->getStartColor()->setARGB('548235');
+        $planilha->getActiveSheet()->getStyle('d'.$inicio)->getFill()->setFillType("solid")->getStartColor()->setARGB('FFC000');
+        $planilha->getActiveSheet()->getStyle('g'.$inicio)->getFill()->setFillType("solid")->getStartColor()->setARGB('548235');
+        $planilha->getActiveSheet()->getStyle('j'.$inicio)->getFill()->setFillType("solid")->getStartColor()->setARGB('BA1542');
+        $planilha->getActiveSheet()->setCellValue('a'.$inicio,'PV');
+        $planilha->getActiveSheet()->setCellValue('d'.$inicio,'SV');
+        $planilha->getActiveSheet()->setCellValue('g'.$inicio,'VR');
+        $planilha->getActiveSheet()->setCellValue('j'.$inicio,'LIG');
+
+        return $planilha;
+
+    }
+
+    /**
+     * @param Relatorio $relatorio, $itens, Spreadsheet $planilha
+     * @return Spreadsheet $planilha
+     */
+    public function scopeBaseGeral($itens, Relatorio $relatorio, Spreadsheet $planilha)
+    {
+
+        $planilha = Relatorio::criarCabecalhoGeral();
+        $comecoDeInsercao=4;
+        
+        foreach($itens as $key){
+            $planilha->getActiveSheet()->setCellValue('a'.$comecoDeInsercao,$key['celular']);
+            $planilha->getActiveSheet()->setCellValue('b'.$comecoDeInsercao,$key['advisor']);
+           
+            switch ($key['tipo_atividade']) {
+            
+                case 'PV':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopePrimeiraVisita($comecoDeInsercao,$atividade,$planilha);
+                    break;
+                
+                case 'SV':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeSegundaVisita($comecoDeInsercao,$atividade,$planilha);
+                    break;
+                
+                case 'VR':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeVisitaRelacionamento($comecoDeInsercao,$atividade,$planilha);
+                    break;
+                
+                case 'LIG':
+                    $atividade = $key['status_atividade'];
+                    $planilha = $relatorio->scopeLigacao($comecoDeInsercao,$atividade,$planilha);
+                    break;
+    
+                default:
+                    break;
+            }
+
+            $planilha->getActiveSheet()->setCellValue('c'.$comecoDeInsercao,$key['criacao']);
+            $planilha->getActiveSheet()->setCellValue('d'.$comecoDeInsercao,$key['alteracao']);
+            $comecoDeInsercao++;
+        }
+
+        $planilha->getActiveSheet()->getStyle('A1:D1'.$comecoDeInsercao)->getAlignment()->setHorizontal('center');
+
+        foreach(range('A','D') as $columnID) {
+            $planilha->getActiveSheet()->getColumnDimension($columnID)
+            ->setAutoSize(true);
+        }
+
+        return $planilha;
+
+    }
 
     /**
      * Preenche os locais de acordo com o status da atividade

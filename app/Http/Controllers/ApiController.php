@@ -225,25 +225,39 @@ class ApiController extends Controller
      */
     public function criarRelatorio(Request $request){
 
-        $relatorio = new Relatorio;
+        $relatorio = new Relatorio();
+        $planilha = new Spreadsheet;
         switch ($request->relatorio ) {
             case 0:
                 $itens = User::join('eventos_historicos','usuarios.id', '=', 'eventos_historicos.usuario_id')
                         ->where('usuario_id',$request->id)->select('usuarios.nome as advisor','eventos_historicos.*')
                         ->get()->sortBy('eventos_historicos.celular');  
+                $planilha = $relatorio->scopeBaseGeral($itens, $relatorio, $planilha);
                 break;
             
-            case 771:
+            case 771: /* Acesso somente administrador*/
                 
                 $itens = EventosHistorico::join('usuarios','eventos_historicos.usuario_id', '=', 'usuarios.id')
-                        ->select('usuarios.nome as advisor','eventos_historicos.*')->get()->sortBy('eventos_historicos.celular');
+                        ->select('usuarios.nome as advisor','eventos_historicos.*')
+                        ->get()->sortBy('eventos_historicos.celular');
+                $planilha = $relatorio->scopeBaseGeral($itens, $relatorio, $planilha);
                 break;
+            case 772: 
 
+                $itens = EventosHistorico::join('usuarios','eventos_historicos.usuario_id', '=', 'usuarios.id')
+                        ->select('usuarios.nome as advisor','eventos_historicos.*')
+                        ->get()->sortBy('eventos_historicos.celular');
+                $planilha = $relatorio->scopeBaseEspecifico($itens, $relatorio, $planilha);
+
+                break;
             default:
 
                 return response()->json(["Houve um erro, reporte o erro ao administrador da plataforma.<br><strong>Código de referência Rel.01 </strong>"],201);
+                
                 break;
         }
+
+        /* funcao
         $planilha = new Spreadsheet;
         $planilha = Relatorio::criarCabecalhoGeral();
         $comecoDeInsercao=4;
@@ -287,8 +301,8 @@ class ApiController extends Controller
 
         foreach(range('A','D') as $columnID) {
             $planilha->getActiveSheet()->getColumnDimension($columnID)
-                ->setAutoSize(true);
-        }
+            ->setAutoSize(true);
+        }*/
         
 
         $escrever = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($planilha, "Xlsx");
@@ -325,15 +339,4 @@ class ApiController extends Controller
         }
 
     }
-/*
-    public function excluirUsuario(Request $request){
-
-        if(User::){
-
-        }else{
-
-        }
-
-    }
-    */
 }

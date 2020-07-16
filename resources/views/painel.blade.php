@@ -69,7 +69,7 @@
                     <option value="0">Relatório Geral - Usuário</option>
                     @if(Auth::user()->acesso == 777)
                       <option value="771">Relatório Geral - Todos</option>
-                      <option value="772">Relatório Tipo2 - Todos</option>
+                      <option value="772">Relatório Específico - Todos</option>
                     @endif
                   </select> 
                 </div>
@@ -146,8 +146,8 @@
               <h4 class="card-title">Criar usuário <close onclick="this.parentElement.parentElement.parentElement.style.display = 'none'"> &times; </close></h4>
               <div class="row">
                 <div class="col-12">
-                  <form action="{{ url('registro') }}" method="POST">
-                    {{ csrf_field() }}  
+                  <form action="{{ route('registro') }}" method="POST">
+                    {{ csrf_field() }}
                     <div class="row">
                       <div class="col-6">
                         <div class="input-group mb-3" style="float:left">

@@ -12,7 +12,7 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            {{/*Criar campo nível na tabela e trabalhar com ele, criar campos de objetivos no usuário, não podem ser null*/}}
+            <!-- Criar campo nível na tabela e trabalhar com ele, criar campos de objetivos no usuário, não podem ser null -->
                 <div class="modal-body" >
                     <div class="row">
                         <div class="col-sm">                                   
@@ -43,7 +43,6 @@
                                     <option value="TED">TED</option>
                                     <option value="D">D</option>
                                     <option value="X">X</option>
-                                    <option value="OK">OK</option>
                                 </select>
                             </div>
                         </div>
@@ -268,7 +267,6 @@
                                         <option value="TED">TED</option>
                                         <option value="D">D</option>
                                         <option value="X">X</option>
-                                        <option value="OK">OK</option>
                                     </select>
                                 </div>
                             </div>

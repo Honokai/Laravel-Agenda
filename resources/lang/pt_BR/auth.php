@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,7 +12,10 @@ return [
     |
     */
 
-    'failed' => 'As credenciais informadas não são válidas.',
-    'throttle' => 'Muitas tentativas. Por favor tente novamente em :seconds segundos.',
+    'failed'   => 'Credenciais informadas não correspondem com nossos registros.',
+    'throttle' => 'Você realizou muitas tentativas de login. Por favor, tente novamente em :seconds segundos.',
+    'email' => 'Endereço de e-mail',
+    'password' => 'Senha',
+    'confirmacao' => 'Confirmação de senha',
 
 ];

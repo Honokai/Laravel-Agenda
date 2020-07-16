@@ -77,7 +77,7 @@ class alterarSenha extends Notification
 
         return (new MailMessage)
             ->subject(Lang::get('Mensagem de alteração de senha'))
-            ->line(Lang::get('Você está recebendo esta mensagem pois recebemos uma solicitação de redefinição de senha para sua conta.'))
+            ->line(Lang::get('Olá, '.$notifiable->nome.', você está recebendo esta mensagem pois recebemos uma solicitação de redefinição de senha para sua conta.'))
             ->action(Lang::get('Redefinir senha'), $url)
             ->line(Lang::get('Este link de redefinição expirará em :count minutos.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(Lang::get('Caso não tenha sido você, desconsidere a mensagem.'));

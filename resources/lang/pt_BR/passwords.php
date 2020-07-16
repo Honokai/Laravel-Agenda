@@ -1,10 +1,9 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Language Lines
+    | Password Reminder Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -13,10 +12,9 @@ return [
     |
     */
 
-    'reset' => 'Sua senha foi redefinida!',
-    'sent' => 'Nós enviamos um e-mail de redefinição de senha!',
-    'throttled' => 'Por favor, espere antes de tentar novamente.',
-    'token' => 'Este token não é mais válido',
-    'user' => "Não conseguimos encontrar um usuário com este endereço de e-mail.",
-
+    'reset'     => 'Sua senha foi redefinida!',
+    'sent'      => 'Enviamos um link para redefinir a sua senha por e-mail.',
+    'throttled' => 'Por favor espere antes de tentar novamente.',
+    'token'     => 'Esse código de redefinição de senha é inválido.',
+    'user'      => 'Não conseguimos encontrar nenhum usuário com o endereço de e-mail informado.',
 ];

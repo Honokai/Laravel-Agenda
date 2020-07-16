@@ -44,7 +44,7 @@ class AdminController extends Controller
     }
 
     public function registro(Request $request)
-{
+    {
         $rules = [
             'nome' => ['required', 'string','min:8', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios'],
@@ -59,12 +59,12 @@ class AdminController extends Controller
             'email' => $request['email'],
             'senha' => Hash::make($request['senha']),
             'acesso' => $request['acesso'],
-        ]);        
+        ]);
 
         $usuario->notify(new VerificarEmail);
 
         return back()->with("status", "Usuário criado.");
-}
+    }
 
 
 }

@@ -18,14 +18,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/planilha/{file}', 'PlanilhaController@download');
 
-Route::post('registro','AdminController@registro');
+Route::post('/registro','AdminController@registro')->name('registro');
 
-/* 
-[
-    'as' => 'planilha.download', 
-    'uses' => 'PlanilhaController@download'
- ]
-*/
 Route::get('/agenda', 'AdminController@agenda')->name('agenda')->middleware('verified');
 
 Route::get('/painel', 'AdminController@painel')->name('painel')->middleware('verified');
