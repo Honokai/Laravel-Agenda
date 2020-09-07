@@ -199,7 +199,7 @@
                     document.getElementById('obsAnteriores').innerHTML = "<div class='collapse' id='collapseExample'></div>";
                     $.each(array, function(index, value){
                       document.getElementById('collapseExample').innerHTML += 
-                      "<div class='card card-body'>"+value.observacao+"<p class='card-text' style='text-align:right'><small class='text-muted'> Aleração feita em "+ value.criacao +"</small></p>"+"</div>"
+                      "<div class='card card-body'>"+value.observacao+"<p class='card-text' style='text-align:right'><small class='text-muted'> Alteração feita em "+ value.criacao +"</small></p>"+"</div>"
                     
                     });
                     console.log(JSON.parse(data));
